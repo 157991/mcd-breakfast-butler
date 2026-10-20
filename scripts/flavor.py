@@ -50,10 +50,20 @@ def tags_of(name: str) -> set[str]:
 
 
 def drink_profile(name: str) -> dict:
-    """饮品的风味 + 咖啡因等级 + 温度形态。认不出时保守返回 mid。"""
+    """饮品的风味 + 咖啡因等级 + 温度形态。认不出时保守返回 mid。
+
+    温度以**商品名里的字**为准，词典只做兜底：
+    词典只能给「鲜萃」→ iced_or_hot，看不出「鲜萃冰咖」其实只有冰的形态。
+    踩过这个坑——按 iced_or_hot 判断，会把一杯纯冰饮当成"可热可冷"放过。
+    """
     for pat, prof in rules()["drink_flavor"].items():
         if pat in name:
-            return {"matched": pat, **prof}
+            p = dict(prof)
+            if "冰" in name and "iced" not in str(p.get("temp", "")):
+                p["temp"] = "iced"
+            if "热" in name and "hot" not in str(p.get("temp", "")):
+                p["temp"] = "hot"
+            return {"matched": pat, **p}
     return {"matched": None, "flavor": [], "caffeine": "mid", "temp": "unknown"}
 
 
@@ -123,6 +133,187 @@ def sauce_flavor(sauce_name: str) -> dict:
         return prof
     t = tags_of(sauce_name)
     return {"flavor": list(t), "pairs_with": [], "why": "按名称推导"}
+
+
+# ---------------- 套餐递归解析（推翻"只能从菜名推断"）----------------
+
+def diff_price_cents(raw) -> int:
+    """把 "+ ¥4" / "- ¥1.5" / "+¥0" 这种展示字符串解析成「分」。
+
+    接口里 diffPrice 不是数字，是给人看的带符号字符串。
+    直接拿去比较会抛 ValueError（踩过一次），必须先标准化成整数分。
+    """
+    if isinstance(raw, (int, float)):
+        return int(round(raw * 100))
+    if not raw:
+        return 0
+    s = str(raw).replace("¥", "").replace("￥", "").replace(" ", "")
+    s = s.replace("＋", "+").replace("－", "-")
+    sign = -1 if s.lstrip().startswith("-") else 1
+    s = s.lstrip("+-")
+    try:
+        return int(round(float(s) * 100)) * sign
+    except ValueError:
+        return 0
+
+
+def ice_options_of(choice: dict) -> list[dict]:
+    """从 choice 自己的 modification 里挖冰量四档。
+
+    这是「套餐内商品能不能改冰」的唯一依据。
+    以前以为套餐只能整份接受或整份排除，是因为只看了套餐顶层的 modification；
+    实际每一轮 choices[] 里的每一个候选项，都各自带着自己的 modification。
+    """
+    code = rules()["ice_keys"]["standard"]["code"]
+    labels = {v["label"] for v in rules()["ice_keys"].values()}
+    out = []
+    for it in ((choice.get("modification") or {}).get("items") or []):
+        for v in (it.get("values") or []):
+            if v.get("code") == code and v.get("name") in labels:
+                out.append({"label": v["name"], "code": v["code"],
+                            "key": v.get("selectedKey")})
+    return out
+
+
+def _pick_default(choices: list[dict]) -> dict | None:
+    """订单实际选中的那一项。quantity>0 优先，其次 isDefault。
+
+    实测反例：小杯鲜萃咖啡 isDefault=1 但 quantity=0，
+    鲜萃冰咖 isDefault=0 但 quantity=1，订单给的是后者。
+    """
+    chosen = [c for c in choices if (c.get("quantity") or 0) > 0]
+    if chosen:
+        return chosen[0]
+    return next((c for c in choices if c.get("isDefault")), None)
+
+
+def analyze_combo(detail: dict, contexts: list[str] | None = None) -> dict:
+    """把一个套餐拆成「每一轮实际选了什么、它自己有什么风味、能不能改」。
+
+    这一步解决的是老问题：四件套名字里没有"炸"也没有"薯条"，
+    只按菜名打标签，整个套餐的风味是残缺的。
+    递归到每个组成项之后，风味来自**它自己**，不是来自套餐名的猜测。
+    """
+    d = detail.get("data") if "data" in detail else detail
+    contexts = contexts or []
+    items = []
+
+    for rd in (d.get("rounds") or []):
+        chs = rd.get("choices") or []
+        pick = _pick_default(chs)
+        if not pick:
+            continue
+        nm = pick.get("name") or ""
+        ice = ice_options_of(pick)
+        # 可替换的候选：同一轮里其他选项，且带出它们各自的加价与能否改冰
+        alts = []
+        for c in chs:
+            if str(c.get("code")) == str(pick.get("code")):
+                continue
+            a_ice = ice_options_of(c)
+            a_prof = drink_profile(c.get("name") or "")
+            alts.append({"name": c.get("name"), "code": str(c.get("code")),
+                         "diff_price": diff_price_cents(c.get("diffPrice")),
+                         "can_no_ice": any(o["label"] == "去冰" for o in a_ice),
+                         "temp": a_prof.get("temp", "unknown"),
+                         "caffeine": caffeine_of(c.get("name") or "")})
+        items.append({
+            "round": str(rd.get("id")),
+            "round_name": rd.get("name"),
+            "name": nm,
+            "code": str(pick.get("code")),
+            "tags": sorted(tags_of(nm)),
+            "drink_profile": drink_profile(nm),
+            "caffeine": caffeine_of(nm),
+            "is_drink": is_drink(nm),
+            "diff_price": diff_price_cents(pick.get("diffPrice")),
+            "ice_options": ice,
+            "can_no_ice": any(o["label"] == "去冰" for o in ice),
+            "modifiable": bool(pick.get("supportModify")),
+            "alternatives": alts,
+            "alt_count": len(chs),
+        })
+
+    tags: set[str] = set()
+    for it in items:
+        tags |= set(it["tags"])
+    cfs = [it["caffeine"] for it in items if it["caffeine"] != "unknown"]
+    combo_cf = max(cfs, key=lambda x: CAFFEINE_ORDER.get(x, -1)) if cfs else "unknown"
+
+    return {
+        "name": d.get("name"),
+        "code": str(d.get("code") or ""),
+        "items": items,
+        "tags": sorted(tags),
+        "caffeine": combo_cf,
+        "has_hot_drink": any(it["is_drink"] and "hot" in str(it["drink_profile"].get("temp"))
+                             for it in items),
+        "contexts": contexts,
+    }
+
+
+def plan_combo_flavor(combo: dict, contexts: list[str]) -> dict:
+    """对整份套餐给出改造方案：哪一项要改、换成什么、加多少钱。
+
+    产品上最关键的一条：**不要因为一杯饮品不能去冰就整份排除套餐。**
+    能改就改（去冰 +¥0）；改不了就换一个能改的，把差价讲清楚。
+    """
+    swaps, notes = [], []
+    want_no_ice = bool({"alcohol"} & set(contexts))
+    avoid_caffeine = bool({"night", "sleep", "alcohol"} & set(contexts))
+
+    for it in combo["items"]:
+        if not it["is_drink"]:
+            continue
+        cf = it["caffeine"]
+        need_cf_cut = avoid_caffeine and CAFFEINE_ORDER.get(cf, 0) >= 2
+        need_ice_cut = want_no_ice and "iced" in str(it["drink_profile"].get("temp"))
+
+        if it["can_no_ice"] and (need_ice_cut or not need_cf_cut):
+            key = next(o["key"] for o in it["ice_options"] if o["label"] == "去冰")
+            swaps.append({
+                "round": it["round"], "code": it["code"], "name": it["name"],
+                "action": "modify", "ice": "去冰", "key": key,
+                "diff_price": 0,
+                "why": "这一项自己就能改冰，去冰不改价格",
+            })
+            continue
+
+        if need_ice_cut or need_cf_cut:
+            # 当前这杯改不了或咖啡因太高，从同一轮的候选里找一个更好的
+            cands = []
+            for alt in it["alternatives"]:
+                cold = "iced" in str(alt["temp"]) or "cold" in str(alt["temp"])
+                # 本来就是热饮的，不存在"去冰"这回事，不该因为这个条件被淘汰。
+                # 踩过：热豆浆因为"没有去冰选项"被筛掉，结果推了一杯去冰雪碧。
+                if need_ice_cut and cold and not alt["can_no_ice"]:
+                    continue
+                if need_cf_cut and CAFFEINE_ORDER.get(alt["caffeine"], 0) >= 2:
+                    continue
+                cands.append(alt)
+            if cands:
+                # 宿醉场景先看温度（热饮 > 去冰冷饮），同温再比价格，最后比咖啡因
+                cands.sort(key=lambda x: (
+                    0 if (need_ice_cut and "hot" in str(x["temp"])) else 1,
+                    x["diff_price"],
+                    CAFFEINE_ORDER.get(x["caffeine"], 0)))
+                best = cands[0]
+                swaps.append({
+                    "round": it["round"], "code": best["code"], "name": best["name"],
+                    "replaces": it["name"], "action": "swap",
+                    "ice": "去冰" if best["can_no_ice"] else None,
+                    "diff_price": best["diff_price"],
+                    "temp": best["temp"],
+                    "why": f"「{it['name']}」"
+                           f"{'不能去冰' if not it['can_no_ice'] else '咖啡因偏高'}，"
+                           f"换「{best['name']}」"
+                           f"（{best['diff_price']/100:+.1f} 元，"
+                           f"{'热饮' if 'hot' in str(best['temp']) else '可去冰'}）",
+                })
+            else:
+                notes.append(f"「{it['name']}」改不了也不可替换，此场景下这份套餐不合适")
+    return {"swaps": swaps, "notes": notes}
+
 
 
 # ---------------- 选择 ----------------
@@ -335,18 +526,86 @@ def configure(store_code: str, product_code: str, contexts: list[str],
     }
 
 
+def describe_combo(store_code: str, product_code: str, contexts: list[str],
+                   reservation_date: str = "", order_type: int = 1) -> dict:
+    """查一个套餐的 detail，递归解析出每一轮的组成、风味、可改造性。"""
+    import mcp_call
+
+    params = {"storeCode": store_code, "orderType": order_type,
+              "beType": 1, "code": product_code}
+    if reservation_date:
+        params["reservationDate"] = reservation_date
+    detail = mcp_call.call_tool("query-meal-detail", params)
+    if not detail.get("success"):
+        return {"ok": False, "reason": detail.get("message")}
+
+    combo = analyze_combo(detail, contexts)
+    plan = plan_combo_flavor(combo, contexts)
+
+    # 组装成 create-order 能吃的 roundList
+    round_list, changed = [], {}
+    for sw in plan["swaps"]:
+        changed[sw["round"]] = sw
+    for it in combo["items"]:
+        ci = {"code": it["code"], "quantity": 1}
+        sw = changed.get(it["round"])
+        if sw and sw["action"] == "swap":
+            ci = {"code": sw["code"], "quantity": 1}
+        if sw and sw.get("ice") == "去冰" and (sw["action"] == "modify" or
+                                              (sw["action"] == "swap")):
+            ci["modification"] = {"values": [
+                {"code": rules()["ice_keys"]["no_ice"]["code"], "key": "0-0",
+                 "quantity": 1}]}
+        round_list.append({"round": it["round"], "comboItemList": [ci]})
+
+    return {"ok": True, "combo": combo, "plan": plan, "round_list": round_list}
+
+
 if __name__ == "__main__":
     import argparse
 
-    ap = argparse.ArgumentParser(description="风味引擎：风味 / 冰量 / 酱料")
+    ap = argparse.ArgumentParser(description="风味引擎：风味 / 冰量 / 酱料 / 套餐递归")
     ap.add_argument("code", help="商品编码")
     ap.add_argument("--store", default="1450386")
     ap.add_argument("--ctx", default="", help="逗号分隔的情境，如 alcohol,night")
     ap.add_argument("--drop", default="", help="要去掉的配料，逗号分隔，如 芥末酱,洋葱粒")
+    ap.add_argument("--combo", action="store_true", help="按套餐递归解析")
+    ap.add_argument("--date", default="", help="预约时间，非当前供餐时段必传")
     a = ap.parse_args()
 
     ctxs = [x.strip() for x in a.ctx.split(",") if x.strip()]
     drops = [x.strip() for x in a.drop.split(",") if x.strip()]
+
+    if a.combo:
+        res = describe_combo(a.store, a.code, ctxs, a.date)
+        if not res["ok"]:
+            print("失败:", res["reason"])
+            raise SystemExit(1)
+        c = res["combo"]
+        print(f"套餐: {c['name']}  [{c['code']}]")
+        print(f"整体风味: {'、'.join(rules()['flavor_axes'].get(t, t) for t in c['tags']) or '未识别'}"
+              f"   咖啡因: {c['caffeine']}")
+        print(f"\n递归解析 {len(c['items'])} 个子项（风味来自每一项自己，不是套餐名）：")
+        for it in c["items"]:
+            ice = f"{len(it['ice_options'])}档冰" if it["ice_options"] else "无冰量选项"
+            cf = it["caffeine"]
+            print(f"  [{it['round']}] {it['round_name']:<16} → {it['name'][:20]:<22} "
+                  f"{it['code']:<8} 价差{it['diff_price']/100:+.1f}元  {ice:<10} 咖啡因={cf}"
+                  f"  可换{it['alt_count'] - 1}项")
+        p = res["plan"]
+        print(f"\n改造方案（情境: {', '.join(ctxs) or '无'}）：")
+        if not p["swaps"]:
+            print("  · 无需改动")
+        for sw in p["swaps"]:
+            verb = "去冰" if sw["action"] == "modify" else f"换成 {sw['name']}"
+            print(f"  · [{sw['round']}] {sw.get('replaces', sw['name'])} → {verb}"
+                  f"  ({sw['diff_price']/100:+.1f} 元)   {sw['why']}")
+        for n in p["notes"]:
+            print("  ⚠", n)
+        print("\nroundList（可直接喂 calculate-price / create-order）：")
+        print(json.dumps(res["round_list"], ensure_ascii=False, indent=1))
+        raise SystemExit(0)
+
     res = configure(a.store, a.code, ctxs, drop=drops)
     if not res["ok"]:
         print("失败:", res["reason"])

@@ -2,21 +2,21 @@
   "success": true,
   "code": 200,
   "message": "请求成功",
-  "datetime": "2026-10-20 11:08:28",
-  "traceId": "9c2f5c23187278bce88a43202c60d625",
+  "datetime": "2026-10-20 11:33:12",
+  "traceId": "22acf77fa9ba683d19514dfb388440ca",
   "data": {
-    "productOriginalPrice": 950,
-    "productPrice": 950,
-    "originalPrice": 950,
+    "productOriginalPrice": 2950,
+    "productPrice": 2950,
+    "originalPrice": 2950,
     "discount": 0,
-    "price": 950,
+    "price": 2950,
     "productList": [
       {
-        "productCode": "515280",
-        "productName": "阳光柠檬红茶小杯",
+        "productCode": "9900003458",
+        "productName": "猪柳蛋麦满分套餐",
         "quantity": 1,
-        "originalSubtotal": 950,
-        "subtotal": 950
+        "originalSubtotal": 2950,
+        "subtotal": 2950
       }
     ],
     "takeWayList": [

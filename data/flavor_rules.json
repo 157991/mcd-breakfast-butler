@@ -30,18 +30,23 @@
     "美式": {"flavor": ["savory"], "caffeine": "high", "temp": "iced_or_hot"},
     "奶铁": {"flavor": ["cheese"], "caffeine": "high", "temp": "iced_or_hot"},
     "拿铁": {"flavor": ["cheese"], "caffeine": "high", "temp": "iced_or_hot"},
+    "豆浆": {"flavor": ["savory"], "caffeine": "none", "temp": "hot"},
     "锡兰红茶": {"flavor": ["fresh"], "caffeine": "mid", "temp": "iced_or_hot"},
     "柠檬红茶": {"flavor": ["fresh", "sour"], "caffeine": "mid", "temp": "iced"},
     "可乐": {"flavor": ["sweet", "fresh"], "caffeine": "mid", "temp": "iced"},
     "雪碧": {"flavor": ["fresh", "sweet"], "caffeine": "none", "temp": "iced"},
     "怡泉": {"flavor": ["fresh", "sour"], "caffeine": "none", "temp": "iced"},
     "美汁源": {"flavor": ["fresh", "sweet"], "caffeine": "none", "temp": "iced"},
+    "苹果汁": {"flavor": ["fresh", "sweet"], "caffeine": "none", "temp": "cold"},
+    "纯牛奶": {"flavor": ["savory"], "caffeine": "none", "temp": "cold_or_hot"},
     "玉米杯": {"flavor": ["sweet", "fresh"], "caffeine": "none", "temp": "hot"},
     "新地": {"flavor": ["sweet", "cheese"], "caffeine": "none", "temp": "cold"},
     "派": {"flavor": ["sweet"], "caffeine": "none", "temp": "hot"},
     "麦旋风": {"flavor": ["sweet", "cheese"], "caffeine": "none", "temp": "cold"},
     "粥": {"flavor": ["savory"], "caffeine": "none", "temp": "hot"}
   },
+
+  "note_temp": "词典里的 temp 是兜底值。商品名里带「冰」或「热」时以名字为准——实测「鲜萃冰咖」靠词典只能得到 iced_or_hot，看不出它只有冰的形态。",
 
   "sauce_profile": {
     "北美招牌牧场酱": {"flavor": ["cheese"], "pairs_with": ["spicy", "fried"], "why": "奶香浓，辣味和油炸都能被它压住"},

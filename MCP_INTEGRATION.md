@@ -25,22 +25,23 @@
 |---|---|---|---|
 | `query-nearby-stores` | 定位用户常去的门店，拿到 `storeCode` 与 `beCode` | `beType=1`、`searchType=2`、`city`、`keyword` | 返回 `reservationTimeOptions`，内含**门店实际的早餐时段**（实测门店为 `06:44–10:15`），且通常只给**今明两天** |
 | `query-meals` | 拉取指定时段在售菜单 | `storeCode`、`orderType=1`、`beType=1`、`reservationDate` | 返回 `categories[]`（分类下只给 code+tags）与 `meals{}`（code→名称/价格）。**没有任何营养字段**，且 `currentPrice` 是"随单购早餐卡"优惠价，不等于真实售价 |
-| `query-meal-detail` | 把套餐拆成单品，用于热量加总 | `storeCode`、`orderType`、`beType`、`code`（**不是 `mealCode`**） | 返回 `rounds[].choices[]`，每个 choice 带 `code / quantity / isDefault / diffPrice`。⚠️ **默认组成要取 `quantity>0`，不是 `isDefault=1`** —— 真机下单证明二者可能指向不同商品，见下文 |
+| `query-meal-detail` | 把套餐拆成单品（算热量）；也是**风味可选项的唯一来源** | `storeCode`、`orderType`、`beType`、`code`（**不是 `mealCode`**）、`reservationDate`（非当前供餐时段**必传**，否则报「未匹配到商品」） | 返回 `rounds[].choices[]`，每个 choice 带 `code / quantity / isDefault / diffPrice / supportModify / modification`。⚠️ **默认组成要取 `quantity>0`，不是 `isDefault=1`** —— 真机下单证明二者可能指向不同商品。⚠️ 套餐内每个候选项**各自带 modification**，这是"给套餐里的饮品去冰"的入口 |
 | `calculate-price` | 获取权威价格、取餐方式、优惠 | `storeCode`、`orderType`、`beType`、`items[]`、`reservationDate` | 金额在 **`data.price`**，单位是**分**（1350 = ¥13.50）。`takeWayList` 返回 `code`（`eat-in` 堂食 / `locker-in` 取餐柜）+ `title`，其 `code` 是 `create-order` 的 `takeWayCode` 来源 |
 | `list-nutrition-foods` | 官方营养数据源 | 无参数 | 一次返回 **160 条**，格式为**以中文名为键的文本表**，字段 `energyKj / energyKcal / protein / fat / carbohydrate / sodium / calcium`。**无商品编码、无份量字段** |
 | `query-store-coupons` | 门店维度可用券（结构化） | `storeCode`、`orderType`、`beType`、`reservationDate` | 返回 `couponId / couponCode / products[].productCode`，可直接用于 `calculate-price` 的 `items[].couponId` |
 | `query-my-coupons` | 账户维度券 | 无参数 | 只返回 Markdown 文本（含图片），**没有结构化 couponId**，不能直接用于计价。需要券码时优先用 `query-store-coupons` |
 | `now-time-info` | 服务器时间基准 | 无参数 | 返回 `GMT+08:00` 的格式化时间。所有 `reservationDate` 应以此为准，避免本地时钟偏差 |
+| `create-order` | 生成待支付订单，把方案推进到「支付前一步」 | `storeCode`、`orderType`、`beType`、`items[]`、`takeWayCode`、`reservationDate` | 只创建**待支付**订单，不付款不扣款；返回 `data.payH5Url`（**不是** `payUrl`）。支付窗口 **15 分钟**，超时自动作废。**每日有下单次数上限**，超限返回 `code=600039`，且**取消也占额度** |
+| `cancel-order` | 验证期间的订单清理 | `orderId`、`cancelReasonCode`（必传） | 取消成功返回 `cancelResult: true`。取消不退款也不扣款（本就未付），但**不返还当日下单额度** |
+| `query-order` | 复核订单里的真实商品与状态 | `orderId` | 返回 `orderProductList[].comboItemList[]`，是核对「去冰/换品是否真的写进订单」的唯一依据 |
+| `order-list` | 历史订单，作偏好冷启动信号 | 分页参数 | 比照片可靠的记忆源：含真实商品、套餐拆解、金额、门店、状态 |
 
-### 评估但未进入首版链路
+### 评估但未进入日常链路
 
 | Tool | 未使用原因 |
 |---|---|
-| `create-order` | 会创建真实订单并返回支付链接。首版把订单填到**支付前一步**交给用户确认，避免自动化误下单 |
 | `delivery-query-addresses` | 实测新账号返回 `{"addresses":[]}`。外送链路需先 `delivery-create-address`，属于首次设置步骤，不进日常链路 |
-| `cancel-order` / `query-order` | 作为异常兜底预留，不在正常路径调用 |
 | `available-coupons` / `auto-bind-coupons` | 领券动作涉及账户变更，须用户显式要求才执行 |
-| `order-list` | 历史订单可作偏好冷启动的补充信号，但首版以用户主动记录为主 |
 | `campaign-calendar` / `mall-*` / `draw-lottery` / `party-*` | 与"工作日早餐"场景无关，不纳入 |
 
 ## 三、完整调用链路
@@ -79,7 +80,82 @@
    └─ 返回订单详情 + 支付链接 → 交由用户本人完成付款
 ```
 
-## 四、对接中必须处理的四个工程问题
+## 四、风味层：三个能写进订单的参数
+
+风味在本项目里不是形容词，是**三个会真实写进订单、店员照着做**的字段。
+模型的职责只是听懂"不要冰"，具体参数必须由词典和接口原文决定 —— 否则同一句话每次得到不同结果。
+
+### 4.1 冰量：四个选项共用同一个 code（最容易传错）
+
+`modification.items[].values[]` 里，标准 / 去冰 / 多冰 / 少冰四档的 `code` **全部是 `200002`**，只靠 `key` 区分：
+
+| 档位 | code | key | 加价 |
+|---|---|---|---|
+| 标准 | `200002` | `0-1` | +¥0 |
+| 去冰 | `200002` | `0-0` | +¥0 |
+| 多冰 | `200002` | `0-2` | +¥0 |
+| 少冰 | `200002` | `1-1` | +¥0 |
+
+只传 `code` 而不传 `key`，等于没表达选哪一档。
+
+### 4.2 酱料在 `rounds` 里，不在 `modification` 里
+
+「蘸酱麦麦脆汁鸡」的三款酱是 `rounds[].choices[]` 的一整组，不是产品特制项：
+
+| 酱 | code | 加价 |
+|---|---|---|
+| 北美招牌牧场酱 | `521797` | +¥0 |
+| 韩式烟熏芝士风味酱 | `521966` | +¥0 |
+| 日式鲜磨山葵酱 | `521799` | +¥0 |
+
+本项目的选择逻辑：辣味主食配奶香酱、油炸主食配酸/辛香酱（避免给炸鸡配芝士酱）。规则在 `data/flavor_rules.json`。
+
+### 4.3 配料增减：`selectedKey` 保留，`unselectedKey` 去掉
+
+每个配料项自带这两个 key（保留 `0-1` / 去掉 `0-0`），且**该组所有项必须一起传**。
+双层吉士汉堡有 5 项：吉士 `100141`、酸黄瓜 `100202`、洋葱粒 `100212`、番茄酱 `100214`、芥末酱 `102230`。
+
+`supportModify=false` 的商品（如那么大鸡排 `521156`）没有这两个字段，就是不能改。
+
+### 4.4 套餐内商品也能单独改造（此前误判为"只能整份排除"）
+
+这是本项目投入最大的一次纠错。早期结论是「套餐里的饮品改不了，遇到忌冰只能把整份套餐排除」——实测有 **52 个候选被挡掉**，几乎砍掉一半早餐。
+
+真实结构是：`rounds[].choices[]` 里**每一个候选项各自带着自己的 `modification`**。
+顶层 `supportModify=false` 只说明"套餐本身不可整体特制"，不影响组成项各自可改。
+
+传参路径（`create-order` schema 原文）：
+
+```
+items[].roundList[].round                          ← 传 round 的 id，字符串形式 "1"/"2"/"3"
+items[].roundList[].comboItemList[].code           ← 该轮选中的商品
+items[].roundList[].comboItemList[].modification.values[].code / key / quantity
+```
+
+实测价格（门店 `1450386`，猪柳蛋麦满分套餐 `9900003458`，`calculate-price` 权威价）：
+
+| 饮品方案 | 实付 |
+|---|---|
+| 默认：鲜萃冰咖（**无冰量选项，改不了**） | ¥25.50 |
+| 优品豆浆大杯（热饮，本来就不冰） | ¥25.50 |
+| 可乐中杯 / 无糖可乐中杯 / 雪碧中杯 · 去冰 | **¥24.00** |
+| 阳光柠檬红茶中杯 · 去冰 | ¥24.00 |
+| 中杯怡泉+C · 去冰 | ¥25.50 |
+| 麦咖啡冰美式中杯 · 去冰 | ¥29.50 |
+| 麦咖啡冰美式中杯 · **标准冰**（对照组） | ¥29.50 |
+
+这张表读出三个结论：
+
+1. **去冰本身不加价**——同一杯冰美式，标准冰与去冰冻一个价（¥29.50）。此前"去冰会不会加钱"的担心可以移除。
+2. **加价全部来自"换饮品"**（`diffPrice`），且换便宜的还真会变便宜：可乐中杯比默认冰咖低 ¥1.50。
+3. **默认饮品是最坑的那个**：鲜萃冰咖加价 ¥0，却**根本没有去冰选项**。想要一杯能去冰的，必须主动换掉它——这正是"不要冰"这句话在真实菜单上的成本。
+
+### 4.5 `diffPrice` 是展示字符串，不是数字
+
+接口返回的是 `"+ ¥4"` / `"- ¥1.5"` 这种带符号文本，直接当数字比较会抛 `ValueError`。
+必须标准化成「分」再排序（`scripts/flavor.py::diff_price_cents`）。
+
+## 五、对接中必须处理的四个工程问题
 
 这些问题如果不处理，程序会**静默给出错误答案**，比报错更危险。
 
@@ -162,7 +238,7 @@ expirePayTime    2026-10-20 10:07:22   ← 15 分钟后过期
 `orderType=1`（到店自取）若传 `beCode` 也会报错。这类错误不会降级，只会中断，
 因此 `SKILL.md` 里以「陷阱清单」形式固化，避免每次重新踩。
 
-## 五、业务价值
+## 六、业务价值
 
 麦当劳 MCP 提供的是**事实层**（在售什么、多少钱、能不能预约），
 本项目在其上补的是**决策层**（在约束下替你选一个，并说清为什么）。
@@ -177,7 +253,7 @@ expirePayTime    2026-10-20 10:07:22   ← 15 分钟后过期
 
 **一句话**：MCP 让"能不能买、多少钱"变成可编程的事实；这个 Skill 让"该不该买这一个"变成可解释的决策。
 
-## 六、合规与安全
+## 七、合规与安全
 
 - 仓库内**不含任何真实 Token**。`scripts/.token` 已在 `.gitignore` 中排除，配置文件仅使用占位符。
 - 所有验证均为只读查询（`query-*` / `list-*` / `calculate-price`），未创建、未取消任何真实订单。
