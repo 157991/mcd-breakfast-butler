@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 09:25:34",
+  "traceId": "7712e7ad9c00d56cbe126e6369fd55b0",
+  "data": [
+    {
+      "title": "新人专享-中杯美式7折",
+      "couponId": "365A627ABDC435D840984F03055DF097",
+      "couponCode": "MCD6110THX08G8009P700",
+      "tradeDateTime": "2026-10-20 00:00:00-2026-11-18 23:59:59",
+      "products": [
+        {
+          "productCode": "9900000119",
+          "productName": "美式中杯"
+        }
+      ],
+      "promotionId": "110961005"
+    },
+    {
+      "title": "新人专享-中杯奶铁7折",
+      "couponId": "54573C230294E24F154414A1EE2949CD",
+      "couponCode": "MCD60M0P9X197040001TG",
+      "tradeDateTime": "2026-10-20 00:00:00-2026-11-18 23:59:59",
+      "products": [
+        {
+          "productCode": "9900000117",
+          "productName": "奶铁中杯"
+        }
+      ],
+      "promotionId": "110961004"
+    }
+  ]
+}

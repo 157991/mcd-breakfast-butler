@@ -1,0 +1,58 @@
+{
+  "_comment": "场景一：正常拍了三餐。10-19 晚餐含饮酒，因此 10-20/21 适用「不安排冰饮」。",
+  "meals": [
+    {
+      "date": "2026-10-17",
+      "slot": "breakfast",
+      "items": [{ "name": "猪柳蛋麦满分套餐", "kcal": 546 }],
+      "source": "mcd_official",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-10-17",
+      "slot": "lunch",
+      "items": [{ "name": "番茄炒蛋盖饭", "kcal": 650 }],
+      "source": "photo_estimate",
+      "confidence": "low",
+      "note": "单张照片估算，误差区间约 ±40%"
+    },
+    {
+      "date": "2026-10-18",
+      "slot": "breakfast",
+      "items": [{ "name": "大脆鸡扒麦满分组合", "kcal": 376 }],
+      "source": "mcd_official",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-10-18",
+      "slot": "dinner",
+      "items": [{ "name": "火锅", "kcal": 900 }],
+      "source": "photo_estimate",
+      "confidence": "low"
+    },
+    {
+      "date": "2026-10-19",
+      "slot": "breakfast",
+      "items": [{ "name": "猪柳蛋麦满分组合", "kcal": 402 }],
+      "source": "mcd_official",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-10-19",
+      "slot": "dinner",
+      "items": [
+        { "name": "烧烤", "kcal": 1000 },
+        { "name": "啤酒3瓶", "kcal": 450 }
+      ],
+      "source": "photo_estimate",
+      "confidence": "low"
+    }
+  ],
+  "contexts": [
+    { "date": "2026-10-20", "tags": ["alcohol"], "source": "user_utterance", "raw": "今晚喝酒了，明早不要冰咖啡" }
+  ],
+  "explicit_requests": [],
+  "feedback": [
+    { "date": "2026-10-18", "name": "大脆鸡扒麦满分组合", "positive": true, "note": "这个不错" }
+  ]
+}

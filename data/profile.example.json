@@ -1,0 +1,21 @@
+{
+  "city": "上海",
+  "store_code": "1450034",
+  "store_name": "麦当劳上海徐家汇餐厅",
+  "order_type": 1,
+  "be_type": 1,
+  "meal_time": "07:30",
+  "budget_cny": 18.0,
+  "calorie_window": [350, 500],
+  "goal": "slow_loss",
+  "body": {
+    "sex": "male",
+    "height_cm": 175,
+    "weight_kg": 72,
+    "activity_level": "light",
+    "note": "示例资料，仅用于演示，实际使用由用户首次设置填写"
+  },
+  "allergens": [],
+  "exclude_keywords": [],
+  "prefer_keywords": ["麦满分", "粥"]
+}

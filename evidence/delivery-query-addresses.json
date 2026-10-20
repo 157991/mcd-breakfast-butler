@@ -1,0 +1,3 @@
+{
+  "_raw_text": "## Response Structure \n## 以下字段很重要，必须按照格式以及顺序展示，禁止模型丢弃\n| 字段 | 数据源 | 业务说明 | 是否必须展示 |\n- **地址ID**: data.addresses[].addressId, 地址唯一标识, 强制展示\n- **联系人**: data.addresses[].contactName, 收货联系人, 强制展示\n- **配送地址**: data.addresses[].fullAddress, 完整送货地址, 强制展示\n- **联系电话**: data.addresses[].phone, 联系电话, 强制展示\n## 输出格式\n|序号| 地址ID | 联系人 | 配送地址 | 联系电话 \n|:---:|:---:|:---:|:---:|:---:|:---:|\n|{序号}|{data.addresses[].addressId}|{data.addresses[].contactName}|{data.addresses[].fullAddress}|{data.addresses[].phone}|{\"success\":true,\"code\":200,\"message\":\"请求成功\",\"datetime\":\"2026-10-20 09:21:42\",\"traceId\":\"c7e46df5900ada1f84035b3be8cc19d2\",\"data\":{\"addresses\":[]}}"
+}

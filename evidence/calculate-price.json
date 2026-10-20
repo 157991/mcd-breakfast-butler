@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 09:25:15",
+  "traceId": "b1d023dbc734a9741e161d6fb602de8a",
+  "data": {
+    "productOriginalPrice": 2550,
+    "productPrice": 2550,
+    "originalPrice": 2550,
+    "discount": 0,
+    "price": 2550,
+    "productList": [
+      {
+        "productCode": "9900003458",
+        "productName": "猪柳蛋麦满分套餐",
+        "quantity": 1,
+        "originalSubtotal": 2550,
+        "subtotal": 2550
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "locker-in",
+        "title": "外带",
+        "subtitle": "店内取餐柜"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "_comment": "场景二：一天没拍照片。系统不得追问、不得把缺失当作零摄入，仍要完成安排。",
+  "meals": [
+    {
+      "date": "2026-10-16",
+      "slot": "breakfast",
+      "items": [{ "name": "猪柳蛋麦满分组合", "kcal": 402 }],
+      "source": "mcd_official",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-10-17",
+      "slot": "breakfast",
+      "items": [{ "name": "火腿扒早安营养卷", "kcal": 444 }],
+      "source": "mcd_official",
+      "confidence": "high"
+    }
+  ],
+  "contexts": [],
+  "explicit_requests": [],
+  "feedback": [
+    { "date": "2026-10-17", "name": "火腿扒早安营养卷", "positive": true, "note": "这个吃得饱" }
+  ],
+  "gap_note": "10-18 至 10-20 无任何记录。系统不做补录追问；安排时只降低对近期的依赖，不降低对长期偏好的依赖。"
+}

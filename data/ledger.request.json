@@ -1,0 +1,29 @@
+{
+  "_comment": "场景三：临时说「明天想吃营养卷」。该要求优先于常规推荐，但仍受预算与在售约束。",
+  "meals": [
+    {
+      "date": "2026-10-18",
+      "slot": "breakfast",
+      "items": [{ "name": "猪柳蛋麦满分组合", "kcal": 402 }],
+      "source": "mcd_official",
+      "confidence": "high"
+    },
+    {
+      "date": "2026-10-19",
+      "slot": "breakfast",
+      "items": [{ "name": "大脆鸡扒麦满分组合", "kcal": 376 }],
+      "source": "mcd_official",
+      "confidence": "high"
+    }
+  ],
+  "contexts": [],
+  "explicit_requests": [
+    {
+      "target_date": "2026-10-21",
+      "text": "明天想吃营养卷",
+      "must": ["营养卷"],
+      "created_at": "2026-10-20 21:40"
+    }
+  ],
+  "feedback": []
+}

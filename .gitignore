@@ -1,0 +1,27 @@
+# 凭据与本地环境
+scripts/.token
+.token
+*.token
+.env
+.env.*
+
+# 运行时缓存（套餐详情查询缓存，可由 scripts/resolver.py 重建）
+evidence/details/
+
+# 用户隐私数据（体重、作息、饮酒记录，不入库）
+data/profile.json
+data/ledger.json
+.mcd-breakfast/
+.demo_home/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

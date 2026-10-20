@@ -1,0 +1,4 @@
+YOUR_MCP_TOKEN
+
+# 把上面一行替换成你的麦当劳 MCP Token（申请地址 https://open.mcd.cn/mcp）
+# 本文件不会被提交：.gitignore 已排除 scripts/.token
