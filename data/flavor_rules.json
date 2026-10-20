@@ -1,0 +1,109 @@
+{
+  "version": "1.0",
+  "note": "风味词典。所有标签都由商品名与特制项名称推导，不依赖模型自由发挥；模型只能在这张表里选，不能自己创造风味。",
+
+  "flavor_axes": {
+    "spicy": "辣",
+    "fried": "油炸/酥脆",
+    "cheese": "芝士奶香",
+    "savory": "咸鲜",
+    "sour": "酸",
+    "sweet": "甜",
+    "fresh": "清爽",
+    "smoky": "烟熏"
+  },
+
+  "dish_keywords": {
+    "spicy": ["麦辣", "香辣", "辣味", "龙焰", "辣椒", "川辣", "麻辣", "椒麻"],
+    "fried": ["脆", "炸", "酥", "琵琶腿", "鸡排", "薯条", "薯饼", "油条", "鸡柳", "V翅", "麦乐鸡", "扭扭薯"],
+    "cheese": ["吉士", "芝士", "奶铁", "奶酪"],
+    "savory": ["板烧", "牛肉", "牛堡", "猪柳", "粥", "蛋", "火腿", "香肠", "鸡腿汉堡", "麦香鸡", "双层"],
+    "sour": ["酸黄瓜", "柠檬", "番茄酱", "山葵"],
+    "sweet": ["新地", "派", "麦旋风", "糖", "菠萝", "草莓", "朱古力", "相思"],
+    "fresh": ["红茶", "雪碧", "怡泉", "美汁源", "玉米", "笋", "沙拉", "柠柠"],
+    "smoky": ["烟熏", "韩式", "咖喱", "椒盐"]
+  },
+
+  "drink_flavor": {
+    "麦咖啡": {"flavor": ["savory"], "caffeine": "high", "temp": "iced_or_hot"},
+    "鲜萃": {"flavor": ["savory"], "caffeine": "high", "temp": "iced_or_hot"},
+    "美式": {"flavor": ["savory"], "caffeine": "high", "temp": "iced_or_hot"},
+    "奶铁": {"flavor": ["cheese"], "caffeine": "high", "temp": "iced_or_hot"},
+    "拿铁": {"flavor": ["cheese"], "caffeine": "high", "temp": "iced_or_hot"},
+    "锡兰红茶": {"flavor": ["fresh"], "caffeine": "mid", "temp": "iced_or_hot"},
+    "柠檬红茶": {"flavor": ["fresh", "sour"], "caffeine": "mid", "temp": "iced"},
+    "可乐": {"flavor": ["sweet", "fresh"], "caffeine": "mid", "temp": "iced"},
+    "雪碧": {"flavor": ["fresh", "sweet"], "caffeine": "none", "temp": "iced"},
+    "怡泉": {"flavor": ["fresh", "sour"], "caffeine": "none", "temp": "iced"},
+    "美汁源": {"flavor": ["fresh", "sweet"], "caffeine": "none", "temp": "iced"},
+    "玉米杯": {"flavor": ["sweet", "fresh"], "caffeine": "none", "temp": "hot"},
+    "新地": {"flavor": ["sweet", "cheese"], "caffeine": "none", "temp": "cold"},
+    "派": {"flavor": ["sweet"], "caffeine": "none", "temp": "hot"},
+    "麦旋风": {"flavor": ["sweet", "cheese"], "caffeine": "none", "temp": "cold"},
+    "粥": {"flavor": ["savory"], "caffeine": "none", "temp": "hot"}
+  },
+
+  "sauce_profile": {
+    "北美招牌牧场酱": {"flavor": ["cheese"], "pairs_with": ["spicy", "fried"], "why": "奶香浓，辣味和油炸都能被它压住"},
+    "韩式烟熏芝士风味酱": {"flavor": ["smoky", "cheese"], "pairs_with": ["fried", "savory"], "why": "烟熏配炸鸡是标准搭配，芝士增加厚度"},
+    "日式鲜磨山葵酱": {"flavor": ["sour", "spicy"], "pairs_with": ["fried"], "why": "辛香冲鼻，最解油炸的腻"},
+    "番茄酱": {"flavor": ["sour", "sweet"], "pairs_with": ["fried"], "why": "酸甜解腻，最稳妥"},
+    "芥末酱": {"flavor": ["sour", "spicy"], "pairs_with": ["savory", "cheese"], "why": "配牛肉和芝士能提味"},
+    "酸黄瓜": {"flavor": ["sour"], "pairs_with": ["cheese", "savory"], "why": "切开油腻感"},
+    "吉士": {"flavor": ["cheese"], "pairs_with": ["savory"], "why": "基础打底"},
+    "洋葱粒": {"flavor": ["spicy"], "pairs_with": ["savory"], "why": "提供辛香层次，不吃可去"}
+  },
+
+  "pairing_rules": [
+    {
+      "id": "spicy_needs_creamy",
+      "when": {"dish_has": ["spicy"]},
+      "then": {"prefer_sauce_flavor": ["cheese"], "avoid_sauce_flavor": ["spicy"],
+               "why": "辣味主食配奶香酱中和；再叠辣酱只会更燥"}
+    },
+    {
+      "id": "fried_needs_acid",
+      "when": {"dish_has": ["fried"]},
+      "then": {"prefer_sauce_flavor": ["sour"], "avoid_sauce_flavor": ["cheese"],
+               "why": "油炸配酸/辛香解腻；配芝士会让整体更重"}
+    },
+    {
+      "id": "savory_needs_clean",
+      "when": {"dish_has": ["savory"], "dish_lacks": ["spicy", "fried"]},
+      "then": {"prefer_drink_flavor": ["fresh"], "why": "咸鲜主食不需要浓酱，配清爽饮品不抢味"}
+    },
+    {
+      "id": "sweet_needs_no_sugar",
+      "when": {"dish_has": ["sweet"]},
+      "then": {"avoid_sauce_flavor": ["sweet"], "prefer_drink_flavor": ["fresh"],
+               "why": "已有甜味，饮品不要再加糖"}
+    }
+  ],
+
+  "temperature_rules": [
+    {
+      "id": "no_caffeine_night",
+      "when": {"context_tags": ["night", "sleep", "alcohol"], "caffeine_avoid": true},
+      "then": {"exclude_caffeine": ["high", "mid"], "why": "咖啡因半衰期约 5 小时，晚上摄入影响入睡"}
+    },
+    {
+      "id": "alcohol_no_ice",
+      "when": {"context_tags": ["alcohol"]},
+      "then": {"temperature": "no_ice", "why": "饮酒后肠胃敏感，冰饮刺激；去冰不改价格"}
+    },
+    {
+      "id": "spicy_keep_cold",
+      "when": {"dish_has": ["spicy"], "context_tags_not": ["alcohol", "night"]},
+      "then": {"temperature": "less_ice", "why": "辣味配微冰解燥，全冰会冲淡味道"}
+    }
+  ],
+
+  "ice_keys": {
+    "standard": {"code": "200002", "key": "0-1", "label": "标准"},
+    "no_ice": {"code": "200002", "key": "0-0", "label": "去冰"},
+    "more_ice": {"code": "200002", "key": "0-2", "label": "多冰"},
+    "less_ice": {"code": "200002", "key": "1-1", "label": "少冰"}
+  },
+
+  "note_ice": "冰量组的 code 实测恒为 200002，四个选项共用同一 code，靠 key 区分。这是最容易传错的地方：传 code 相同、key 不同才是四档。"
+}

@@ -2,21 +2,21 @@
   "success": true,
   "code": 200,
   "message": "请求成功",
-  "datetime": "2026-10-20 10:29:03",
-  "traceId": "3a602339fd307fa9bb92fe63df0c3d9d",
+  "datetime": "2026-10-20 11:08:28",
+  "traceId": "9c2f5c23187278bce88a43202c60d625",
   "data": {
-    "productOriginalPrice": 1390,
-    "productPrice": 1390,
-    "originalPrice": 1390,
+    "productOriginalPrice": 950,
+    "productPrice": 950,
+    "originalPrice": 950,
     "discount": 0,
-    "price": 1390,
+    "price": 950,
     "productList": [
       {
-        "productCode": "9900015568",
-        "productName": "精选超值随心配",
+        "productCode": "515280",
+        "productName": "阳光柠檬红茶小杯",
         "quantity": 1,
-        "originalSubtotal": 1390,
-        "subtotal": 1390
+        "originalSubtotal": 950,
+        "subtotal": 950
       }
     ],
     "takeWayList": [
