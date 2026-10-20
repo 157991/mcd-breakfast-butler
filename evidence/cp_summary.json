@@ -1,0 +1,56 @@
+[
+  {
+    "name": "猪柳蛋麦满分",
+    "store_code": "5022",
+    "delivery_code": "905022",
+    "store_cents": 1750,
+    "store_ok": true,
+    "delivery_cents": 2530,
+    "delivery_ok": true
+  },
+  {
+    "name": "火腿扒麦满分",
+    "store_code": "1254",
+    "delivery_code": "901254",
+    "store_cents": 1100,
+    "store_ok": true,
+    "delivery_cents": 1830,
+    "delivery_ok": true
+  },
+  {
+    "name": "原味板烧鸡腿麦满分",
+    "store_code": "6800",
+    "delivery_code": "906800",
+    "store_cents": 1450,
+    "store_ok": true,
+    "delivery_cents": 2330,
+    "delivery_ok": true
+  },
+  {
+    "name": "大脆鸡扒麦满分",
+    "store_code": "5889",
+    "delivery_code": "905889",
+    "store_cents": 1100,
+    "store_ok": true,
+    "delivery_cents": 1830,
+    "delivery_ok": true
+  },
+  {
+    "name": "脆薯饼",
+    "store_code": "4825",
+    "delivery_code": "904825",
+    "store_cents": 800,
+    "store_ok": true,
+    "delivery_cents": 1630,
+    "delivery_ok": true
+  },
+  {
+    "name": "吉士蛋麦满分",
+    "store_code": "5888",
+    "delivery_code": "905888",
+    "store_cents": 1000,
+    "store_ok": true,
+    "delivery_cents": 1680,
+    "delivery_ok": true
+  }
+]

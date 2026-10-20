@@ -2,14 +2,62 @@
   "success": true,
   "code": 200,
   "message": "请求成功",
-  "datetime": "2026-10-20 09:40:52",
-  "traceId": "ab0cc51080f29ecb1347be0e9eb95735",
+  "datetime": "2026-10-20 10:06:27",
+  "traceId": "6666ea2d352c7c67800621133bc829bf",
   "data": [
     {
-      "storeCode": "1450323",
-      "storeName": "麦当劳上海徐汇漕溪北路百脑汇餐厅",
-      "address": "漕溪北路339号",
-      "distance": 121,
+      "storeCode": "1450386",
+      "storeName": "麦当劳上海长宁福缘湾九华餐厅",
+      "address": "淞虹路938号",
+      "distance": 356,
+      "businessStatus": true,
+      "businessStartTime": "07:00",
+      "businessEndTime": "23:00",
+      "longitude": 0.0,
+      "latitude": 0.0,
+      "reservation": true,
+      "reservationTimeOptions": [
+        {
+          "date": "2026-10-20",
+          "today": true,
+          "reservationOptionText": "早餐(07:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)，宵夜(22:14至22:46)"
+        },
+        {
+          "date": "2026-10-21",
+          "today": false,
+          "reservationOptionText": "早餐(07:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)，宵夜(22:14至22:46)"
+        }
+      ]
+    },
+    {
+      "storeCode": "1450293",
+      "storeName": "麦当劳上海长宁西郊百联餐厅",
+      "address": "仙霞西路88号二楼G05-01F2-01-0025商铺",
+      "distance": 447,
+      "businessStatus": true,
+      "businessStartTime": "07:00",
+      "businessEndTime": "22:00",
+      "longitude": 0.0,
+      "latitude": 0.0,
+      "reservation": true,
+      "reservationTimeOptions": [
+        {
+          "date": "2026-10-20",
+          "today": true,
+          "reservationOptionText": "早餐(07:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)"
+        },
+        {
+          "date": "2026-10-21",
+          "today": false,
+          "reservationOptionText": "早餐(07:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)"
+        }
+      ]
+    },
+    {
+      "storeCode": "1450099",
+      "storeName": "麦当劳上海天山西路餐厅",
+      "address": "天山西路138号",
+      "distance": 1399,
       "businessStatus": true,
       "businessStartTime": "06:30",
       "businessEndTime": "23:00",
@@ -30,13 +78,13 @@
       ]
     },
     {
-      "storeCode": "1450034",
-      "storeName": "麦当劳上海徐家汇餐厅",
-      "address": "天钥桥路1号（徐家汇1#店）",
-      "distance": 355,
+      "storeCode": "1450476",
+      "storeName": "麦当劳上海东虹桥中心友乐路餐厅",
+      "address": "友乐路299号2号楼1层L124、L125-1、L125-2",
+      "distance": 1782,
       "businessStatus": true,
-      "businessStartTime": "00:00",
-      "businessEndTime": "23:59",
+      "businessStartTime": "07:00",
+      "businessEndTime": "21:00",
       "longitude": 0.0,
       "latitude": 0.0,
       "reservation": true,
@@ -44,20 +92,20 @@
         {
           "date": "2026-10-20",
           "today": true,
-          "reservationOptionText": "早餐(05:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)，宵夜(22:14至23:59)"
+          "reservationOptionText": "早餐(07:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至20:46)"
         },
         {
           "date": "2026-10-21",
           "today": false,
-          "reservationOptionText": "宵夜(00:00至04:45,22:14至23:59)，早餐(05:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)"
+          "reservationOptionText": "早餐(07:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至20:46)"
         }
       ]
     },
     {
-      "storeCode": "1450288",
-      "storeName": "麦当劳上海徐汇辛耕路永新坊餐厅",
-      "address": "徐汇辛耕路133号",
-      "distance": 429,
+      "storeCode": "1450165",
+      "storeName": "麦当劳上海福泉路餐厅",
+      "address": "金钟路631弄3号105室",
+      "distance": 1859,
       "businessStatus": true,
       "businessStartTime": "07:00",
       "businessEndTime": "23:00",
@@ -74,54 +122,6 @@
           "date": "2026-10-21",
           "today": false,
           "reservationOptionText": "早餐(07:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)，宵夜(22:14至22:46)"
-        }
-      ]
-    },
-    {
-      "storeCode": "1450136",
-      "storeName": "麦当劳上海华山路餐厅",
-      "address": "华山路2038号",
-      "distance": 571,
-      "businessStatus": true,
-      "businessStartTime": "05:00",
-      "businessEndTime": "00:00",
-      "longitude": 0.0,
-      "latitude": 0.0,
-      "reservation": true,
-      "reservationTimeOptions": [
-        {
-          "date": "2026-10-20",
-          "today": true,
-          "reservationOptionText": "早餐(05:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)，宵夜(22:14至23:59)"
-        },
-        {
-          "date": "2026-10-21",
-          "today": false,
-          "reservationOptionText": "早餐(05:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)，宵夜(22:14至23:59)"
-        }
-      ]
-    },
-    {
-      "storeCode": "1450648",
-      "storeName": "麦当劳上海徐汇漕溪北路718号餐厅",
-      "address": "漕溪北路718号-12号商铺",
-      "distance": 752,
-      "businessStatus": true,
-      "businessStartTime": "07:00",
-      "businessEndTime": "22:00",
-      "longitude": 0.0,
-      "latitude": 0.0,
-      "reservation": true,
-      "reservationTimeOptions": [
-        {
-          "date": "2026-10-20",
-          "today": true,
-          "reservationOptionText": "早餐(07:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)"
-        },
-        {
-          "date": "2026-10-21",
-          "today": false,
-          "reservationOptionText": "早餐(07:14至10:15)，午餐(10:44至14:15)，下午茶(14:44至16:45)，夜市(17:14至21:45)"
         }
       ]
     }

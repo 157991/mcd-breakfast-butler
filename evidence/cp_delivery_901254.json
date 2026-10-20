@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:07:16",
+  "traceId": "449d9a03adb528d2dd54df7ddb01a6c6",
+  "data": {
+    "productOriginalPrice": 1150,
+    "productPrice": 1150,
+    "deliveryOriginalPrice": 600,
+    "deliveryPrice": 600,
+    "packingOriginalPrice": 80,
+    "packingPrice": 80,
+    "originalPrice": 1830,
+    "discount": 0,
+    "price": 1830,
+    "productList": [
+      {
+        "productCode": "901254",
+        "productName": "火腿扒麦满分",
+        "quantity": 1,
+        "originalSubtotal": 1150,
+        "subtotal": 1150
+      },
+      {
+        "productCode": "920174",
+        "productName": "打包服务费",
+        "quantity": 8,
+        "originalSubtotal": 80,
+        "subtotal": 0
+      }
+    ]
+  }
+}

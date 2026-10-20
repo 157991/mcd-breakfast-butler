@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:09:19",
+  "traceId": "0bec2a73ecbbe2bddb8ab00c8f312574",
+  "data": {
+    "productOriginalPrice": 990,
+    "productPrice": 990,
+    "originalPrice": 990,
+    "discount": 0,
+    "price": 990,
+    "productList": [
+      {
+        "productCode": "9900011872",
+        "productName": "芝芝火腿扒堡组合",
+        "quantity": 1,
+        "originalSubtotal": 990,
+        "subtotal": 990
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

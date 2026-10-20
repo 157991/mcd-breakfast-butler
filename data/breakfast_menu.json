@@ -1,6 +1,6 @@
 {
-  "storeCode": "1450034",
-  "reservationDate": "2026-10-21 07:00",
+  "storeCode": "1450386",
+  "reservationDate": "2026-10-21 07:30",
   "items": [
     {
       "code": "9900003431",
@@ -32,8 +32,8 @@
     {
       "code": "5022",
       "name": "猪柳蛋麦满分",
-      "price": "18",
-      "originalPrice": "18",
+      "price": "17.5",
+      "originalPrice": "17.5",
       "is_combo": false,
       "parts_complete": false,
       "kcal": 387.0,
@@ -155,8 +155,8 @@
     {
       "code": "9900003428",
       "name": "火腿扒早安营养卷组合",
-      "price": "11.7",
-      "originalPrice": "19.5",
+      "price": "11.4",
+      "originalPrice": "19",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -182,8 +182,8 @@
     {
       "code": "9900003425",
       "name": "猪柳炒双蛋堡组合",
-      "price": "12.6",
-      "originalPrice": "21",
+      "price": "13.2",
+      "originalPrice": "22",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -209,8 +209,8 @@
     {
       "code": "9900003424",
       "name": "原味板烧鸡腿炒双蛋堡组合",
-      "price": "12.6",
-      "originalPrice": "21",
+      "price": "13.2",
+      "originalPrice": "22",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -255,8 +255,8 @@
     {
       "code": "9900003423",
       "name": "猪柳麦满分组合",
-      "price": "10.2",
-      "originalPrice": "17",
+      "price": "10.5",
+      "originalPrice": "17.5",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -280,29 +280,10 @@
       "note": "组合内 鲜萃冰咖 无官方数据，合计不可用"
     },
     {
-      "code": "3757",
-      "name": "纯悦",
-      "price": "7.5",
-      "originalPrice": "7.5",
-      "is_combo": false,
-      "parts_complete": false,
-      "kcal": 0.0,
-      "source": "official_single",
-      "parts": [
-        {
-          "name": "纯悦",
-          "kcal": 0.0,
-          "via": "exact"
-        }
-      ],
-      "confidence": "high",
-      "note": null
-    },
-    {
       "code": "6362",
       "name": "100% 苹果汁(盒装)",
-      "price": "11.5",
-      "originalPrice": "11.5",
+      "price": "12",
+      "originalPrice": "12",
       "is_combo": false,
       "parts_complete": false,
       "kcal": 88.0,
@@ -318,29 +299,23 @@
       "note": null
     },
     {
-      "code": "510041",
-      "name": "冰牛奶中杯",
-      "price": "19",
-      "originalPrice": "19",
+      "code": "521917",
+      "name": "泷愿成真麦旋风——大米风味",
+      "price": "15",
+      "originalPrice": "15",
       "is_combo": false,
       "parts_complete": false,
-      "kcal": 224.0,
-      "source": "official_single",
-      "parts": [
-        {
-          "name": "冰牛奶中杯",
-          "kcal": 224.0,
-          "via": "exact"
-        }
-      ],
-      "confidence": "high",
-      "note": null
+      "kcal": null,
+      "source": "missing",
+      "parts": [],
+      "confidence": "none",
+      "note": "营养库无对应条目"
     },
     {
       "code": "9900014835",
       "name": "北非蛋风味猪柳蛋麦满分套餐",
-      "price": "17.7",
-      "originalPrice": "29.5",
+      "price": "18",
+      "originalPrice": "30",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -372,8 +347,8 @@
     {
       "code": "9900014833",
       "name": "北非蛋风味脆鸡排麦满分套餐",
-      "price": "16.8",
-      "originalPrice": "28",
+      "price": "17.1",
+      "originalPrice": "28.5",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -418,8 +393,8 @@
     {
       "code": "9900014830",
       "name": "北非蛋风味猪柳蛋麦满分组合",
-      "price": "15",
-      "originalPrice": "25",
+      "price": "15.3",
+      "originalPrice": "25.5",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -442,17 +417,30 @@
       "note": "组合内单品均无官方数据"
     },
     {
-      "code": "507394",
-      "name": "牛奶",
-      "price": "19",
-      "originalPrice": "19",
-      "is_combo": false,
+      "code": "9900003432",
+      "name": "吉士蛋麦满分组合",
+      "price": "7.5",
+      "originalPrice": "12.5",
+      "is_combo": true,
       "parts_complete": false,
       "kcal": null,
       "source": "missing",
-      "parts": [],
+      "parts": [
+        {
+          "name": "吉士蛋麦满分",
+          "qty": 1,
+          "kcal": null,
+          "via": "miss"
+        },
+        {
+          "name": "鲜萃冰咖",
+          "qty": 1,
+          "kcal": null,
+          "via": "miss"
+        }
+      ],
       "confidence": "none",
-      "note": "营养库无对应条目"
+      "note": "组合内单品均无官方数据"
     },
     {
       "code": "9900012729",
@@ -484,8 +472,8 @@
     {
       "code": "9900003453",
       "name": "吉士蛋麦满分套餐",
-      "price": "9.9",
-      "originalPrice": "16.5",
+      "price": "10.2",
+      "originalPrice": "17",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -517,8 +505,8 @@
     {
       "code": "9900008745",
       "name": "新地",
-      "price": "13",
-      "originalPrice": "13",
+      "price": "12",
+      "originalPrice": "12",
       "is_combo": false,
       "parts_complete": true,
       "kcal": 282.0,
@@ -583,8 +571,8 @@
     {
       "code": "9900011873",
       "name": "芝芝火腿扒堡套餐",
-      "price": "11.1",
-      "originalPrice": "18.5",
+      "price": "11.4",
+      "originalPrice": "19",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -754,8 +742,8 @@
     {
       "code": "9900003728",
       "name": "脆香油条豆浆组合",
-      "price": "18",
-      "originalPrice": "18",
+      "price": "17.5",
+      "originalPrice": "17.5",
       "is_combo": true,
       "parts_complete": true,
       "kcal": 606.0,
@@ -780,8 +768,8 @@
     {
       "code": "9900003449",
       "name": "火腿扒麦满分套餐",
-      "price": "10.5",
-      "originalPrice": "17.5",
+      "price": "10.8",
+      "originalPrice": "18",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -833,8 +821,8 @@
     {
       "code": "6800",
       "name": "原味板烧鸡腿麦满分",
-      "price": "15",
-      "originalPrice": "15",
+      "price": "14.5",
+      "originalPrice": "14.5",
       "is_combo": false,
       "parts_complete": false,
       "kcal": 246.0,
@@ -852,8 +840,8 @@
     {
       "code": "9900008752",
       "name": "派",
-      "price": "8.5",
-      "originalPrice": "8.5",
+      "price": "8",
+      "originalPrice": "8",
       "is_combo": false,
       "parts_complete": true,
       "kcal": 221.0,
@@ -891,8 +879,8 @@
     {
       "code": "9900008754",
       "name": "经典麦旋风",
-      "price": "15.5",
-      "originalPrice": "15.5",
+      "price": "14",
+      "originalPrice": "14",
       "is_combo": false,
       "parts_complete": true,
       "kcal": 266.0,
@@ -911,8 +899,8 @@
     {
       "code": "514700",
       "name": "原味板烧鸡腿炒双蛋堡",
-      "price": "18",
-      "originalPrice": "18",
+      "price": "18.5",
+      "originalPrice": "18.5",
       "is_combo": false,
       "parts_complete": false,
       "kcal": 419.0,
@@ -1027,8 +1015,8 @@
     {
       "code": "9900003459",
       "name": "双层原味板烧鸡腿麦满分套餐",
-      "price": "15.6",
-      "originalPrice": "26",
+      "price": "15.9",
+      "originalPrice": "26.5",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -1139,8 +1127,8 @@
     {
       "code": "9900003454",
       "name": "猪柳麦满分套餐",
-      "price": "12.9",
-      "originalPrice": "21.5",
+      "price": "13.2",
+      "originalPrice": "22",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -1170,6 +1158,25 @@
       "note": "组合内 鲜萃冰咖 无官方数据，合计不可用"
     },
     {
+      "code": "514850",
+      "name": "抹茶阿芙佳朵",
+      "price": "15",
+      "originalPrice": "15",
+      "is_combo": false,
+      "parts_complete": false,
+      "kcal": 147.0,
+      "source": "official_single",
+      "parts": [
+        {
+          "name": "抹茶阿芙佳朵",
+          "kcal": 147.0,
+          "via": "exact"
+        }
+      ],
+      "confidence": "high",
+      "note": null
+    },
+    {
       "code": "514851",
       "name": "咖啡阿芙佳朵",
       "price": "15",
@@ -1187,32 +1194,6 @@
       ],
       "confidence": "high",
       "note": null
-    },
-    {
-      "code": "9900008094",
-      "name": "吉士蛋麦满分组合",
-      "price": "7.2",
-      "originalPrice": "12",
-      "is_combo": true,
-      "parts_complete": false,
-      "kcal": null,
-      "source": "missing",
-      "parts": [
-        {
-          "name": "吉士蛋麦满分",
-          "qty": 1,
-          "kcal": null,
-          "via": "miss"
-        },
-        {
-          "name": "鲜萃冰咖",
-          "qty": 1,
-          "kcal": null,
-          "via": "miss"
-        }
-      ],
-      "confidence": "none",
-      "note": "组合内单品均无官方数据"
     },
     {
       "code": "507368",
@@ -1249,8 +1230,8 @@
     {
       "code": "9900003504",
       "name": "双层原味板烧鸡腿麦满分组合",
-      "price": "12.9",
-      "originalPrice": "21.5",
+      "price": "13.2",
+      "originalPrice": "22",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -1322,8 +1303,8 @@
     {
       "code": "9900003468",
       "name": "火腿扒早安营养卷套餐",
-      "price": "14.4",
-      "originalPrice": "24",
+      "price": "14.1",
+      "originalPrice": "23.5",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -1355,8 +1336,8 @@
     {
       "code": "9900003466",
       "name": "原味板烧鸡腿炒双蛋堡套餐",
-      "price": "15.3",
-      "originalPrice": "25.5",
+      "price": "15.9",
+      "originalPrice": "26.5",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -1388,8 +1369,8 @@
     {
       "code": "9900003465",
       "name": "猪柳炒双蛋堡套餐",
-      "price": "15.3",
-      "originalPrice": "25.5",
+      "price": "15.9",
+      "originalPrice": "26.5",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -1421,8 +1402,8 @@
     {
       "code": "513112",
       "name": "火腿扒早安营养卷",
-      "price": "16.5",
-      "originalPrice": "16.5",
+      "price": "15.5",
+      "originalPrice": "15.5",
       "is_combo": false,
       "parts_complete": false,
       "kcal": 444.0,
@@ -1440,8 +1421,8 @@
     {
       "code": "513113",
       "name": "图林根香肠早安营养卷",
-      "price": "16.5",
-      "originalPrice": "16.5",
+      "price": "16",
+      "originalPrice": "16",
       "is_combo": false,
       "parts_complete": false,
       "kcal": 425.0,
@@ -1459,8 +1440,8 @@
     {
       "code": "521950",
       "name": "蓝莓爆爆珠麦旋风",
-      "price": "16.5",
-      "originalPrice": "16.5",
+      "price": "15",
+      "originalPrice": "15",
       "is_combo": false,
       "parts_complete": false,
       "kcal": null,
@@ -1498,8 +1479,8 @@
     {
       "code": "9900016146",
       "name": "巧克力味厚松饼猪柳堡组合",
-      "price": "12.6",
-      "originalPrice": "21",
+      "price": "12.9",
+      "originalPrice": "21.5",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -1524,8 +1505,8 @@
     {
       "code": "9900016144",
       "name": "枫糖风味厚松饼猪柳堡组合",
-      "price": "12.6",
-      "originalPrice": "21",
+      "price": "12.9",
+      "originalPrice": "21.5",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -1550,8 +1531,8 @@
     {
       "code": "9900016145",
       "name": "巧克力味厚松饼猪柳蛋堡组合",
-      "price": "15",
-      "originalPrice": "25",
+      "price": "15.3",
+      "originalPrice": "25.5",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -1576,8 +1557,8 @@
     {
       "code": "9900016143",
       "name": "枫糖风味厚松饼猪柳蛋堡组合",
-      "price": "15",
-      "originalPrice": "25",
+      "price": "15.3",
+      "originalPrice": "25.5",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -1634,8 +1615,8 @@
     {
       "code": "9900014829",
       "name": "北非蛋风味麦满分套餐",
-      "price": "15.3",
-      "originalPrice": "25.5",
+      "price": "15.6",
+      "originalPrice": "26",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -1747,8 +1728,8 @@
     {
       "code": "9900014826",
       "name": "北非蛋风味脆鸡排麦满分组合",
-      "price": "14.1",
-      "originalPrice": "23.5",
+      "price": "14.4",
+      "originalPrice": "24",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -1792,8 +1773,8 @@
     {
       "code": "9900014820",
       "name": "北非蛋风味麦满分组合",
-      "price": "12.6",
-      "originalPrice": "21",
+      "price": "12.9",
+      "originalPrice": "21.5",
       "is_combo": true,
       "parts_complete": false,
       "kcal": null,
@@ -1816,10 +1797,23 @@
       "note": "组合内单品均无官方数据"
     },
     {
+      "code": "515280",
+      "name": "阳光柠檬红茶",
+      "price": "9.5",
+      "originalPrice": "9.5",
+      "is_combo": false,
+      "parts_complete": false,
+      "kcal": null,
+      "source": "missing",
+      "parts": [],
+      "confidence": "none",
+      "note": "营养库无对应条目"
+    },
+    {
       "code": "502773",
       "name": "猪柳炒双蛋堡",
-      "price": "18",
-      "originalPrice": "18",
+      "price": "18.5",
+      "originalPrice": "18.5",
       "is_combo": false,
       "parts_complete": false,
       "kcal": 437.0,
@@ -1894,6 +1888,19 @@
       "note": "组合内 巧克力味厚松饼猪柳蛋堡、鲜萃冰咖 无官方数据，合计不可用"
     },
     {
+      "code": "521770",
+      "name": "麦当劳素龙限定饼干",
+      "price": "2",
+      "originalPrice": "2",
+      "is_combo": false,
+      "parts_complete": false,
+      "kcal": null,
+      "source": "missing",
+      "parts": [],
+      "confidence": "none",
+      "note": "营养库无对应条目"
+    },
+    {
       "code": "9900016176",
       "name": "枫糖风味厚松饼猪柳堡套餐",
       "price": "15.54",
@@ -1927,25 +1934,6 @@
       "note": "组合内 枫糖风味厚松饼猪柳堡、鲜萃冰咖 无官方数据，合计不可用"
     },
     {
-      "code": "507389",
-      "name": "浓缩咖啡",
-      "price": "15",
-      "originalPrice": "15",
-      "is_combo": false,
-      "parts_complete": false,
-      "kcal": 13.0,
-      "source": "official_single",
-      "parts": [
-        {
-          "name": "浓缩咖啡",
-          "kcal": 13.0,
-          "via": "exact"
-        }
-      ],
-      "confidence": "high",
-      "note": null
-    },
-    {
       "code": "9900016171",
       "name": "枫糖风味厚松饼猪柳蛋堡套餐",
       "price": "17.94",
@@ -1977,32 +1965,6 @@
       ],
       "confidence": "none",
       "note": "组合内 枫糖风味厚松饼猪柳蛋堡、鲜萃冰咖 无官方数据，合计不可用"
-    },
-    {
-      "code": "507387",
-      "name": "卡布奇诺",
-      "price": "21",
-      "originalPrice": "21",
-      "is_combo": false,
-      "parts_complete": false,
-      "kcal": null,
-      "source": "missing",
-      "parts": [],
-      "confidence": "none",
-      "note": "营养库无对应条目"
-    },
-    {
-      "code": "515955",
-      "name": "浓浓燕麦黑巧（冰/热）",
-      "price": "15.9",
-      "originalPrice": "23",
-      "is_combo": false,
-      "parts_complete": false,
-      "kcal": null,
-      "source": "missing",
-      "parts": [],
-      "confidence": "none",
-      "note": "营养库无对应条目"
     },
     {
       "code": "4825",
@@ -2056,6 +2018,33 @@
       "note": "营养库无对应条目"
     },
     {
+      "code": "9900011708",
+      "name": "火腿扒麦满分组合",
+      "price": "8.1",
+      "originalPrice": "13.5",
+      "is_combo": true,
+      "parts_complete": false,
+      "kcal": null,
+      "partial_kcal": 261.0,
+      "source": "incomplete_combo",
+      "parts": [
+        {
+          "name": "火腿扒麦满分",
+          "qty": 1,
+          "kcal": 261.0,
+          "via": "exact"
+        },
+        {
+          "name": "鲜萃冰咖",
+          "qty": 1,
+          "kcal": null,
+          "via": "miss"
+        }
+      ],
+      "confidence": "none",
+      "note": "组合内 鲜萃冰咖 无官方数据，合计不可用"
+    },
+    {
       "code": "520689",
       "name": "鲜萃咖啡",
       "price": "9.5",
@@ -2084,8 +2073,8 @@
     {
       "code": "3505",
       "name": "锡兰红茶",
-      "price": "10.5",
-      "originalPrice": "10.5",
+      "price": "11",
+      "originalPrice": "11",
       "is_combo": false,
       "parts_complete": false,
       "kcal": 2.0,
@@ -2146,37 +2135,10 @@
       "note": "营养库无对应条目"
     },
     {
-      "code": "9900011709",
-      "name": "火腿扒麦满分组合",
-      "price": "7.8",
-      "originalPrice": "13",
-      "is_combo": true,
-      "parts_complete": false,
-      "kcal": null,
-      "partial_kcal": 261.0,
-      "source": "incomplete_combo",
-      "parts": [
-        {
-          "name": "火腿扒麦满分",
-          "qty": 1,
-          "kcal": 261.0,
-          "via": "exact"
-        },
-        {
-          "name": "鲜萃冰咖",
-          "qty": 1,
-          "kcal": null,
-          "via": "miss"
-        }
-      ],
-      "confidence": "none",
-      "note": "组合内 鲜萃冰咖 无官方数据，合计不可用"
-    },
-    {
       "code": "5889",
       "name": "大脆鸡扒麦满分",
-      "price": "11.5",
-      "originalPrice": "11.5",
+      "price": "11",
+      "originalPrice": "11",
       "is_combo": false,
       "parts_complete": false,
       "kcal": 361.0,
@@ -2196,19 +2158,6 @@
       "name": "玉米杯",
       "price": "13",
       "originalPrice": "13",
-      "is_combo": false,
-      "parts_complete": false,
-      "kcal": null,
-      "source": "missing",
-      "parts": [],
-      "confidence": "none",
-      "note": "营养库无对应条目"
-    },
-    {
-      "code": "515946",
-      "name": "浓浓黑巧（冰/热）",
-      "price": "13.9",
-      "originalPrice": "21",
       "is_combo": false,
       "parts_complete": false,
       "kcal": null,

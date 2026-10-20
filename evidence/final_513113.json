@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:09:48",
+  "traceId": "7aa11f452c3da320d8b3ebc7cef940c6",
+  "data": {
+    "productOriginalPrice": 1600,
+    "productPrice": 1600,
+    "originalPrice": 1600,
+    "discount": 0,
+    "price": 1600,
+    "productList": [
+      {
+        "productCode": "513113",
+        "productName": "图林根香肠早安营养卷",
+        "quantity": 1,
+        "originalSubtotal": 1600,
+        "subtotal": 1600
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

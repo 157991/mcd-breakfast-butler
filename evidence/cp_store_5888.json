@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:07:18",
+  "traceId": "0df5cd4ec8642306cecea5462f0060a3",
+  "data": {
+    "productOriginalPrice": 1000,
+    "productPrice": 1000,
+    "originalPrice": 1000,
+    "discount": 0,
+    "price": 1000,
+    "productList": [
+      {
+        "productCode": "5888",
+        "productName": "吉士蛋麦满分",
+        "quantity": 1,
+        "originalSubtotal": 1000,
+        "subtotal": 1000
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

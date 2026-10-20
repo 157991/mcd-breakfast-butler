@@ -1,12 +1,15 @@
 {
   "city": "上海",
-  "store_code": "1450034",
-  "store_name": "麦当劳上海徐家汇餐厅",
+  "store_code": "1450386",
+  "store_name": "麦当劳上海长宁福缘湾九华餐厅",
   "order_type": 1,
   "be_type": 1,
   "meal_time": "07:30",
   "budget_cny": 18.0,
-  "calorie_window": [350, 500],
+  "calorie_window": [
+    350,
+    500
+  ],
   "goal": "slow_loss",
   "body": {
     "sex": "male",
@@ -17,6 +20,17 @@
   },
   "allergens": [],
   "exclude_keywords": [],
-  "off_meal_keywords": ["麦旋风", "圆筒", "新地", "派"],
-  "prefer_keywords": ["麦满分", "粥"]
+  "off_meal_keywords": [
+    "麦旋风",
+    "圆筒",
+    "新地",
+    "派"
+  ],
+  "prefer_keywords": [
+    "麦满分",
+    "粥"
+  ],
+  "be_code": "145038602",
+  "address_id": "1036586140206618117513916976",
+  "distance_m": 356
 }

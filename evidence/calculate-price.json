@@ -2,21 +2,21 @@
   "success": true,
   "code": 200,
   "message": "请求成功",
-  "datetime": "2026-10-20 09:25:15",
-  "traceId": "b1d023dbc734a9741e161d6fb602de8a",
+  "datetime": "2026-10-20 10:10:04",
+  "traceId": "41eba51ea7057bee3a5004e3e5a07848",
   "data": {
-    "productOriginalPrice": 2550,
-    "productPrice": 2550,
-    "originalPrice": 2550,
+    "productOriginalPrice": 1550,
+    "productPrice": 1550,
+    "originalPrice": 1550,
     "discount": 0,
-    "price": 2550,
+    "price": 1550,
     "productList": [
       {
-        "productCode": "9900003458",
-        "productName": "猪柳蛋麦满分套餐",
+        "productCode": "9900005470",
+        "productName": "雪菜脆笋鸡肉粥套餐",
         "quantity": 1,
-        "originalSubtotal": 2550,
-        "subtotal": 2550
+        "originalSubtotal": 1550,
+        "subtotal": 1550
       }
     ],
     "takeWayList": [
@@ -26,9 +26,9 @@
         "subtitle": "店内用餐"
       },
       {
-        "code": "locker-in",
+        "code": "take-in-store",
         "title": "外带",
-        "subtitle": "店内取餐柜"
+        "subtitle": "店内自提"
       }
     ]
   }

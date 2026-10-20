@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:09:22",
+  "traceId": "fd3c243661f2983c1877d99da5806ea0",
+  "data": {
+    "productOriginalPrice": 2990,
+    "productPrice": 2990,
+    "originalPrice": 2990,
+    "discount": 0,
+    "price": 2990,
+    "productList": [
+      {
+        "productCode": "9900016524",
+        "productName": "厚松饼猪柳蛋堡三件套",
+        "quantity": 1,
+        "originalSubtotal": 2990,
+        "subtotal": 2990
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:08:20",
+  "traceId": "a0b3723f027c412905ef6190a420305c",
+  "data": {
+    "list": [
+      {
+        "orderId": "1030525170000795821281521101",
+        "orderType": "1",
+        "createTime": "2026-10-20 09:52:22",
+        "beType": "1",
+        "beCode": "",
+        "storeCode": "1450034",
+        "storeName": "麦当劳上海徐家汇餐厅",
+        "orderStatus": "订单已取消",
+        "orderProductList": [
+          {
+            "productCode": "5889",
+            "productName": "大脆鸡扒麦满分",
+            "quantity": 1,
+            "comboItemList": []
+          }
+        ],
+        "realTotalAmount": "11.5"
+      },
+      {
+        "orderId": "1030268980000808540604890948",
+        "orderType": "1",
+        "createTime": "2026-10-20 09:50:50",
+        "beType": "1",
+        "beCode": "",
+        "storeCode": "1450034",
+        "storeName": "麦当劳上海徐家汇餐厅",
+        "orderStatus": "订单已取消",
+        "orderProductList": [
+          {
+            "productCode": "9900003431",
+            "productName": "大脆鸡扒麦满分组合",
+            "quantity": 1,
+            "comboItemList": [
+              {
+                "productCode": "5889",
+                "name": "大脆鸡扒麦满分",
+                "quantity": 1
+              },
+              {
+                "productCode": "521327",
+                "name": "鲜萃冰咖",
+                "quantity": 1
+              }
+            ]
+          }
+        ],
+        "realTotalAmount": "13.5"
+      }
+    ]
+  }
+}

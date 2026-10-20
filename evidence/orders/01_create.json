@@ -1,0 +1,55 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:10:04",
+  "traceId": "c32bac779eed3a0424ac5342121f8a71",
+  "data": {
+    "orderId": "1030341360000795821575121269",
+    "payId": "111032596560266989568",
+    "payH5Url": "https://m.mcd.cn/mcp/scanToPay?orderId=1030341360000795821575121269",
+    "orderDetail": {
+      "orderId": "1030341360000795821575121269",
+      "orderStatus": "待支付",
+      "status": "10",
+      "storeName": "麦当劳上海长宁福缘湾九华餐厅",
+      "storeAddress": "淞虹路938号",
+      "orderProductList": [
+        {
+          "productName": "雪菜脆笋鸡肉粥套餐",
+          "productImage": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900005470_320.png",
+          "quantity": 1,
+          "price": "15.5",
+          "comboItemList": [
+            {
+              "itemName": "雪菜脆笋鸡肉粥",
+              "itemQuantity": 1
+            },
+            {
+              "itemName": "脆香油条",
+              "itemQuantity": 1
+            },
+            {
+              "itemName": "脆薯饼",
+              "itemQuantity": 1
+            }
+          ]
+        }
+      ],
+      "totalAmount": "15.5",
+      "realTotalAmount": "15.5",
+      "totalDiscountAmount": "0",
+      "couponList": [],
+      "createTime": "2026-10-20 10:10:04",
+      "deliveryPrice": "0",
+      "realDeliveryPrice": "0",
+      "needTableware": false,
+      "productPrice": "15.5",
+      "takeWay": "外带",
+      "pickupCode": "",
+      "expirePayTime": "2026-10-20 10:25:04",
+      "payId": "111032596560266989568",
+      "remark": ""
+    }
+  }
+}

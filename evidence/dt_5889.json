@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:09:24",
+  "traceId": "0ba3d14d5efa6347623647d02bf70d3a",
+  "data": {
+    "code": "5889",
+    "name": "大脆鸡扒麦满分",
+    "rounds": [],
+    "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_5889_600.png",
+    "modification": {
+      "items": [
+        {
+          "maxValues": 1,
+          "minValues": 0,
+          "values": [
+            {
+              "code": "100136",
+              "price": 0,
+              "name": "麦香鸡酱",
+              "maxQuantity": 1,
+              "minQuantity": 0,
+              "selectedQuantity": 1,
+              "selectedKey": "0-1",
+              "unselectedKey": "0-0"
+            }
+          ]
+        }
+      ]
+    },
+    "supportModify": true
+  }
+}

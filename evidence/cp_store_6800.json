@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:07:16",
+  "traceId": "5d5100f113ac3adc13023e37a972af1c",
+  "data": {
+    "productOriginalPrice": 1450,
+    "productPrice": 1450,
+    "originalPrice": 1450,
+    "discount": 0,
+    "price": 1450,
+    "productList": [
+      {
+        "productCode": "6800",
+        "productName": "原味板烧鸡腿麦满分",
+        "quantity": 1,
+        "originalSubtotal": 1450,
+        "subtotal": 1450
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

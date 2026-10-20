@@ -1,0 +1,14 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:09:26",
+  "traceId": "a0667055efca28fee11568564f74825c",
+  "data": {
+    "code": "4825",
+    "name": "脆薯饼",
+    "rounds": [],
+    "image": "https://menu-img.mcd.cn/pcm/prod/menu/20250212/product/MS_4825_600.png",
+    "supportModify": false
+  }
+}

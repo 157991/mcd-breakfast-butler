@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:07:17",
+  "traceId": "b697dbcd3b0bfea47297e0d60eb58f4f",
+  "data": {
+    "productOriginalPrice": 1650,
+    "productPrice": 1650,
+    "deliveryOriginalPrice": 600,
+    "deliveryPrice": 600,
+    "packingOriginalPrice": 80,
+    "packingPrice": 80,
+    "originalPrice": 2330,
+    "discount": 0,
+    "price": 2330,
+    "productList": [
+      {
+        "productCode": "906800",
+        "productName": "原味板烧鸡腿麦满分",
+        "quantity": 1,
+        "originalSubtotal": 1650,
+        "subtotal": 1650
+      },
+      {
+        "productCode": "920174",
+        "productName": "打包服务费",
+        "quantity": 8,
+        "originalSubtotal": 80,
+        "subtotal": 0
+      }
+    ]
+  }
+}

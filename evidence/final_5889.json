@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:09:48",
+  "traceId": "f9058a80461510542c280327c2fc818b",
+  "data": {
+    "productOriginalPrice": 1100,
+    "productPrice": 1100,
+    "originalPrice": 1100,
+    "discount": 0,
+    "price": 1100,
+    "productList": [
+      {
+        "productCode": "5889",
+        "productName": "大脆鸡扒麦满分",
+        "quantity": 1,
+        "originalSubtotal": 1100,
+        "subtotal": 1100
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

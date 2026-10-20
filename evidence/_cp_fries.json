@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:08:02",
+  "traceId": "ed44f111ea503a05c5930007be1fbccf",
+  "data": {
+    "productOriginalPrice": 800,
+    "productPrice": 800,
+    "originalPrice": 800,
+    "discount": 0,
+    "price": 800,
+    "productList": [
+      {
+        "productCode": "4825",
+        "productName": "脆薯饼",
+        "quantity": 1,
+        "originalSubtotal": 800,
+        "subtotal": 800
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

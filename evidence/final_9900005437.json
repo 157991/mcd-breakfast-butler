@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:09:48",
+  "traceId": "35e83f691789e8898ca7a6a3cde15962",
+  "data": {
+    "productOriginalPrice": 1250,
+    "productPrice": 1250,
+    "originalPrice": 1250,
+    "discount": 0,
+    "price": 1250,
+    "productList": [
+      {
+        "productCode": "9900005437",
+        "productName": "雪菜脆笋鸡肉粥组合",
+        "quantity": 1,
+        "originalSubtotal": 1250,
+        "subtotal": 1250
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

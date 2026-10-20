@@ -1,0 +1,1095 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:06:58",
+  "traceId": "96c3b53a03fc1c30060e9e03baab10c5",
+  "data": {
+    "categories": [
+      {
+        "name": "人气热卖",
+        "meals": [
+          {
+            "code": "9900016155",
+            "tags": [
+              "浓郁巧克力"
+            ]
+          },
+          {
+            "code": "9900013812",
+            "tags": [
+              "超值量贩"
+            ]
+          },
+          {
+            "code": "9900013221",
+            "tags": [
+              "金奖豆",
+              "现磨"
+            ]
+          },
+          {
+            "code": "9900012857",
+            "tags": [
+              "5.8折起"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "精选分享餐",
+        "meals": [
+          {
+            "code": "9900013805",
+            "tags": [
+              "超值量贩"
+            ]
+          },
+          {
+            "code": "9900013808",
+            "tags": [
+              "超值量贩"
+            ]
+          },
+          {
+            "code": "9900012975"
+          },
+          {
+            "code": "9900012977"
+          }
+        ]
+      },
+      {
+        "name": "厚松饼堡\n系列",
+        "meals": [
+          {
+            "code": "9900016155",
+            "tags": [
+              "三件套",
+              "浓郁巧克力"
+            ]
+          },
+          {
+            "code": "9900016157",
+            "tags": [
+              "三件套",
+              "浓郁巧克力"
+            ]
+          },
+          {
+            "code": "9900014750",
+            "tags": [
+              "三件套",
+              "咸甜美味"
+            ]
+          },
+          {
+            "code": "9900014746",
+            "tags": [
+              "三件套",
+              "咸甜美味"
+            ]
+          },
+          {
+            "code": "521981",
+            "tags": [
+              "单品",
+              "浓郁巧克力"
+            ]
+          },
+          {
+            "code": "521982",
+            "tags": [
+              "单品",
+              "浓郁巧克力"
+            ]
+          },
+          {
+            "code": "521989",
+            "tags": [
+              "单品",
+              "咸甜美味"
+            ]
+          },
+          {
+            "code": "521990",
+            "tags": [
+              "单品",
+              "咸甜美味"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "鲜萃有堡",
+        "meals": [
+          {
+            "code": "9900013360"
+          },
+          {
+            "code": "9900012857",
+            "tags": [
+              "5.8折起"
+            ]
+          },
+          {
+            "code": "9900013221",
+            "tags": [
+              "金奖豆",
+              "现磨"
+            ]
+          },
+          {
+            "code": "521315"
+          }
+        ]
+      },
+      {
+        "name": "北非蛋",
+        "meals": [
+          {
+            "code": "9900015081",
+            "tags": [
+              "三件套",
+              "新品上市（图片）"
+            ]
+          },
+          {
+            "code": "9900014835",
+            "tags": [
+              "三件套",
+              "人气回归（图片）"
+            ]
+          },
+          {
+            "code": "9900014833",
+            "tags": [
+              "三件套",
+              "新品上市（图片）"
+            ]
+          },
+          {
+            "code": "9900014829",
+            "tags": [
+              "三件套",
+              "人气回归（图片）"
+            ]
+          },
+          {
+            "code": "521735",
+            "tags": [
+              "单品",
+              "人气回归（图片）"
+            ]
+          },
+          {
+            "code": "521736",
+            "tags": [
+              "单品",
+              "新品上市（图片）"
+            ]
+          },
+          {
+            "code": "521734",
+            "tags": [
+              "单品",
+              "人气回归（图片）"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "麦满分",
+        "meals": [
+          {
+            "code": "9900013812",
+            "tags": [
+              "三件套",
+              "超值量贩"
+            ]
+          },
+          {
+            "code": "9900013809",
+            "tags": [
+              "三件套",
+              "超值量贩"
+            ]
+          },
+          {
+            "code": "9900013221",
+            "tags": [
+              "三件套",
+              "金奖豆",
+              "现磨"
+            ]
+          },
+          {
+            "code": "9900012971",
+            "tags": [
+              "三件套"
+            ]
+          },
+          {
+            "code": "9900009135",
+            "tags": [
+              "三件套",
+              "人气返场"
+            ]
+          },
+          {
+            "code": "9900003031",
+            "tags": [
+              "三件套",
+              "7.3折起"
+            ]
+          },
+          {
+            "code": "9900012857",
+            "tags": [
+              "三件套",
+              "5.8折起"
+            ]
+          },
+          {
+            "code": "9900001086",
+            "tags": [
+              "三件套",
+              "人气产品"
+            ]
+          },
+          {
+            "code": "520830",
+            "tags": [
+              "单品"
+            ]
+          },
+          {
+            "code": "904989",
+            "tags": [
+              "单品"
+            ]
+          },
+          {
+            "code": "905022",
+            "tags": [
+              "单品",
+              "人气产品"
+            ]
+          },
+          {
+            "code": "906800",
+            "tags": [
+              "单品"
+            ]
+          },
+          {
+            "code": "905024",
+            "tags": [
+              "单品"
+            ]
+          },
+          {
+            "code": "901254",
+            "tags": [
+              "单品"
+            ]
+          },
+          {
+            "code": "905889",
+            "tags": [
+              "单品"
+            ]
+          },
+          {
+            "code": "905888",
+            "tags": [
+              "单品"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "炒双蛋堡",
+        "meals": [
+          {
+            "code": "9900003035",
+            "tags": [
+              "三件套",
+              "7.2折起"
+            ]
+          },
+          {
+            "code": "9900003028",
+            "tags": [
+              "三件套",
+              "7.2折起"
+            ]
+          },
+          {
+            "code": "902902",
+            "tags": [
+              "单品"
+            ]
+          },
+          {
+            "code": "900621",
+            "tags": [
+              "单品"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "早安\n营养卷",
+        "meals": [
+          {
+            "code": "9900003033",
+            "tags": [
+              "三件套",
+              "7.1折起"
+            ]
+          },
+          {
+            "code": "9900003034",
+            "tags": [
+              "三件套",
+              "7.1折起"
+            ]
+          },
+          {
+            "code": "902322",
+            "tags": [
+              "单品"
+            ]
+          },
+          {
+            "code": "902323",
+            "tags": [
+              "单品"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "粥王系列",
+        "meals": [
+          {
+            "code": "9900012973",
+            "tags": [
+              "三件套"
+            ]
+          },
+          {
+            "code": "9900003026",
+            "tags": [
+              "三件套",
+              "7折起"
+            ]
+          },
+          {
+            "code": "902585",
+            "tags": [
+              "单品"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "麦咖啡™",
+        "meals": [
+          {
+            "code": "507328",
+            "tags": [
+              "咖啡",
+              "更奶更浓"
+            ]
+          },
+          {
+            "code": "507368",
+            "tags": [
+              "咖啡"
+            ]
+          },
+          {
+            "code": "510478",
+            "tags": [
+              "咖啡"
+            ]
+          },
+          {
+            "code": "520688",
+            "tags": [
+              "咖啡"
+            ]
+          },
+          {
+            "code": "510488",
+            "tags": [
+              "其他饮品"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "小食甜品\n/其他",
+        "meals": [
+          {
+            "code": "521950",
+            "tags": [
+              "上新"
+            ]
+          },
+          {
+            "code": "521917",
+            "tags": [
+              "上新"
+            ]
+          },
+          {
+            "code": "900479",
+            "tags": [
+              "小食"
+            ]
+          },
+          {
+            "code": "904825",
+            "tags": [
+              "小食"
+            ]
+          },
+          {
+            "code": "902631",
+            "tags": [
+              "小食"
+            ]
+          },
+          {
+            "code": "904437",
+            "tags": [
+              "小食"
+            ]
+          },
+          {
+            "code": "904106",
+            "tags": [
+              "派"
+            ]
+          },
+          {
+            "code": "904105",
+            "tags": [
+              "派"
+            ]
+          },
+          {
+            "code": "902372",
+            "tags": [
+              "冰淇淋"
+            ]
+          },
+          {
+            "code": "902373",
+            "tags": [
+              "冰淇淋"
+            ]
+          },
+          {
+            "code": "902374",
+            "tags": [
+              "冰淇淋"
+            ]
+          },
+          {
+            "code": "902375",
+            "tags": [
+              "冰淇淋"
+            ]
+          }
+        ]
+      },
+      {
+        "name": "饮品",
+        "meals": [
+          {
+            "code": "521817",
+            "tags": [
+              "清爽上新"
+            ]
+          },
+          {
+            "code": "520688",
+            "tags": [
+              "全新登场"
+            ]
+          },
+          {
+            "code": "901089"
+          },
+          {
+            "code": "903505"
+          },
+          {
+            "code": "901027"
+          },
+          {
+            "code": "906352"
+          },
+          {
+            "code": "903755"
+          },
+          {
+            "code": "903050"
+          },
+          {
+            "code": "903071"
+          },
+          {
+            "code": "903060"
+          },
+          {
+            "code": "903495"
+          },
+          {
+            "code": "903418"
+          }
+        ]
+      }
+    ],
+    "meals": {
+      "9900003035": {
+        "name": "原味板烧鸡腿炒双蛋堡套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20260424/product/MS_9900003035_320.png",
+        "currentPrice": "29.5",
+        "originalPrice": "41.5",
+        "canWithOrder": false
+      },
+      "9900003034": {
+        "name": "图林根香肠早安营养卷套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20260424/product/MS_9900003034_320.png",
+        "currentPrice": "27.5",
+        "originalPrice": "39.5",
+        "canWithOrder": false
+      },
+      "9900003033": {
+        "name": "火腿扒早安营养卷套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20260424/product/MS_9900003033_320.png",
+        "currentPrice": "28",
+        "originalPrice": "40",
+        "canWithOrder": false
+      },
+      "900479": {
+        "name": "德式图林根香肠",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_900479_320.png",
+        "currentPrice": "10",
+        "originalPrice": "10",
+        "canWithOrder": false
+      },
+      "9900003031": {
+        "name": "双层板烧鸡腿麦满分套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20260121/product/MS_9900003031_320.png",
+        "currentPrice": "30.5",
+        "originalPrice": "43",
+        "canWithOrder": false
+      },
+      "901089": {
+        "name": "优品豆浆(大杯)",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_901089_320.png",
+        "currentPrice": "13",
+        "originalPrice": "13",
+        "canWithOrder": false
+      },
+      "521989": {
+        "name": "枫糖风味厚松饼猪柳蛋堡",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_521989_320.png",
+        "currentPrice": "23.5",
+        "originalPrice": "23.5",
+        "canWithOrder": false
+      },
+      "903071": {
+        "name": "无糖可口可乐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_G903071_320.png",
+        "currentPrice": "11",
+        "originalPrice": "11",
+        "canWithOrder": false
+      },
+      "9900016157": {
+        "name": "巧克力味厚松饼猪柳蛋堡套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900016157_320.png",
+        "currentPrice": "33.9",
+        "originalPrice": "46",
+        "canWithOrder": false
+      },
+      "9900016155": {
+        "name": "巧克力味厚松饼猪柳堡套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900016155_320.png",
+        "currentPrice": "29.9",
+        "originalPrice": "42",
+        "canWithOrder": false
+      },
+      "507328": {
+        "name": "麦咖啡™奶铁",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20251022/product/MS_G5073291_320.gif",
+        "currentPrice": "13.9",
+        "originalPrice": "21",
+        "discountType": "促销优惠",
+        "canWithOrder": false
+      },
+      "521990": {
+        "name": "枫糖风味厚松饼猪柳堡",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_521990_320.png",
+        "currentPrice": "19.5",
+        "originalPrice": "19.5",
+        "canWithOrder": false
+      },
+      "9900013360": {
+        "name": "芝芝火腿扒堡三件套",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900013360_320.png",
+        "currentPrice": "19.9",
+        "originalPrice": "34",
+        "canWithOrder": false
+      },
+      "507368": {
+        "name": "麦咖啡™美式",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20251022/product/MS_G507369_320.png",
+        "currentPrice": "11.9",
+        "originalPrice": "19",
+        "discountType": "促销优惠",
+        "canWithOrder": false
+      },
+      "902585": {
+        "name": "雪菜脆笋鸡肉粥",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_902585_320.png",
+        "currentPrice": "9",
+        "originalPrice": "9",
+        "canWithOrder": false
+      },
+      "510488": {
+        "name": "燕麦奶",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_G5104891_320.png",
+        "currentPrice": "21",
+        "originalPrice": "21",
+        "canWithOrder": false
+      },
+      "903755": {
+        "name": "纯牛奶(盒装)",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20240731/product/MS_903755_320.png",
+        "currentPrice": "11.5",
+        "originalPrice": "11.5",
+        "canWithOrder": false
+      },
+      "9900003028": {
+        "name": "猪柳炒双蛋堡套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20260424/product/MS_9900003028_320.png",
+        "currentPrice": "29.5",
+        "originalPrice": "41.5",
+        "canWithOrder": false
+      },
+      "9900003026": {
+        "name": "雪菜脆笋鸡肉粥套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900003026_320.png",
+        "currentPrice": "22",
+        "originalPrice": "31.5",
+        "canWithOrder": false
+      },
+      "902902": {
+        "name": "原味板烧鸡腿炒双蛋堡",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_902902_320.png",
+        "currentPrice": "19",
+        "originalPrice": "19",
+        "canWithOrder": false
+      },
+      "900621": {
+        "name": "猪柳炒双蛋堡",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_900621_320.png",
+        "currentPrice": "19",
+        "originalPrice": "19",
+        "canWithOrder": false
+      },
+      "521917": {
+        "name": "泷愿成真麦旋风——大米风味",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_521917_320.png",
+        "currentPrice": "17",
+        "originalPrice": "17",
+        "canWithOrder": false
+      },
+      "9900012857": {
+        "name": "板烧鸡腿麦满分单人餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20260424/product/MS_9900012857_320.png",
+        "currentPrice": "21.9",
+        "originalPrice": "39",
+        "canWithOrder": false
+      },
+      "9900012977": {
+        "name": "精选满分三人餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900012977_320.png",
+        "currentPrice": "56.9",
+        "originalPrice": "102",
+        "canWithOrder": false
+      },
+      "521950": {
+        "name": "蓝莓爆爆珠麦旋风",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_521950_320.png",
+        "currentPrice": "17",
+        "originalPrice": "17",
+        "canWithOrder": false
+      },
+      "9900014835": {
+        "name": "北非蛋风味猪柳蛋麦满分套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900014835_320.png",
+        "currentPrice": "34",
+        "originalPrice": "46",
+        "canWithOrder": false
+      },
+      "9900012973": {
+        "name": "营养粥油条组合",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900012973_320.png",
+        "currentPrice": "19.9",
+        "originalPrice": "19.9",
+        "canWithOrder": false
+      },
+      "9900012975": {
+        "name": "精选满分双人餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900012975_320.png",
+        "currentPrice": "43.9",
+        "originalPrice": "51.5",
+        "canWithOrder": false
+      },
+      "521315": {
+        "name": "芝芝火腿扒堡",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20260824/product/MS_521315_320.png",
+        "currentPrice": "14",
+        "originalPrice": "14",
+        "canWithOrder": false
+      },
+      "9900014833": {
+        "name": "北非蛋风味脆鸡排麦满分套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900014833_320.png",
+        "currentPrice": "32.5",
+        "originalPrice": "44.5",
+        "canWithOrder": false
+      },
+      "9900012971": {
+        "name": "猪柳蛋美式组合",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900012971_320.png",
+        "currentPrice": "27.9",
+        "originalPrice": "27.9",
+        "canWithOrder": false
+      },
+      "906352": {
+        "name": "【美汁源】“黄金橙橙”",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20240904/product/MS_906352_320.png",
+        "currentPrice": "14",
+        "originalPrice": "14",
+        "canWithOrder": false
+      },
+      "905022": {
+        "name": "猪柳蛋麦满分",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20250709/product/MS_905022_320.png",
+        "currentPrice": "18.5",
+        "originalPrice": "18.5",
+        "canWithOrder": false
+      },
+      "905024": {
+        "name": "猪柳麦满分",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_905024_320.png",
+        "currentPrice": "14.5",
+        "originalPrice": "14.5",
+        "canWithOrder": false
+      },
+      "9900009135": {
+        "name": "双层猪柳蛋麦满分套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20260121/product/MS_9900009135_320.png",
+        "currentPrice": "33",
+        "originalPrice": "33",
+        "canWithOrder": false
+      },
+      "510478": {
+        "name": "燕麦奶铁",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20251022/product/MS_G5104781_320.png",
+        "currentPrice": "23",
+        "originalPrice": "23",
+        "canWithOrder": false
+      },
+      "902631": {
+        "name": "脆香油条",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_902631_320.png",
+        "currentPrice": "9.5",
+        "originalPrice": "9.5",
+        "canWithOrder": false
+      },
+      "9900014829": {
+        "name": "北非蛋风味麦满分套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900014829_320.png",
+        "currentPrice": "30",
+        "originalPrice": "42",
+        "canWithOrder": false
+      },
+      "901027": {
+        "name": "100% 苹果汁(盒装)",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20250430/product/MS_901027_320_1745551703367.png",
+        "currentPrice": "13",
+        "originalPrice": "13",
+        "canWithOrder": false
+      },
+      "9900014746": {
+        "name": "枫糖风味厚松饼猪柳蛋堡套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900014746_320.png",
+        "currentPrice": "33.9",
+        "originalPrice": "46",
+        "canWithOrder": false
+      },
+      "9900013812": {
+        "name": "麦满分单人餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900013812_320.png",
+        "currentPrice": "19.9",
+        "originalPrice": "32.5",
+        "canWithOrder": false
+      },
+      "520830": {
+        "name": "双层猪柳蛋麦满分",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_520830_320_1745825365408.png",
+        "currentPrice": "22.5",
+        "originalPrice": "22.5",
+        "canWithOrder": false
+      },
+      "903050": {
+        "name": "可口可乐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_903050_320.png",
+        "currentPrice": "11",
+        "originalPrice": "11",
+        "canWithOrder": false
+      },
+      "9900014750": {
+        "name": "枫糖风味厚松饼猪柳堡套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900014750_320.gif",
+        "currentPrice": "29.9",
+        "originalPrice": "42",
+        "canWithOrder": false
+      },
+      "9900013221": {
+        "name": "一早现磨 超值二件套",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20261008/product/MS_9900013221_320.gif",
+        "currentPrice": "16.9",
+        "originalPrice": "29",
+        "canWithOrder": false
+      },
+      "903495": {
+        "name": "怡泉+C",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_G903495_320.png",
+        "currentPrice": "12.5",
+        "originalPrice": "12.5",
+        "canWithOrder": false
+      },
+      "902322": {
+        "name": "火腿扒早安营养卷",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_902322_320.png",
+        "currentPrice": "17.5",
+        "originalPrice": "17.5",
+        "canWithOrder": false
+      },
+      "904105": {
+        "name": "菠萝派",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_G904105_320.png",
+        "currentPrice": "9",
+        "originalPrice": "9",
+        "canWithOrder": false
+      },
+      "902323": {
+        "name": "图林根香肠早安营养卷",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_902323_320.png",
+        "currentPrice": "17",
+        "originalPrice": "17",
+        "canWithOrder": false
+      },
+      "9900015081": {
+        "name": "北非蛋风味麦满分套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900015081_320.gif",
+        "currentPrice": "30",
+        "originalPrice": "42",
+        "canWithOrder": false
+      },
+      "906800": {
+        "name": "原味板烧鸡腿麦满分",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_906800_320.png",
+        "currentPrice": "16.5",
+        "originalPrice": "16.5",
+        "canWithOrder": false
+      },
+      "904106": {
+        "name": "香芋派",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_G904106_320.png",
+        "currentPrice": "9",
+        "originalPrice": "9",
+        "canWithOrder": false
+      },
+      "904989": {
+        "name": "双层原味板烧鸡腿麦满分",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_904989_320.png",
+        "currentPrice": "20",
+        "originalPrice": "20",
+        "canWithOrder": false
+      },
+      "904825": {
+        "name": "脆薯饼",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_904825_320.png",
+        "currentPrice": "9.5",
+        "originalPrice": "9.5",
+        "canWithOrder": false
+      },
+      "903418": {
+        "name": "阳光柠檬红茶",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_G903418_320.png",
+        "currentPrice": "11",
+        "originalPrice": "11",
+        "canWithOrder": false
+      },
+      "9900013809": {
+        "name": "猪柳麦满分单人餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900013809_320.png",
+        "currentPrice": "21.9",
+        "originalPrice": "21.9",
+        "canWithOrder": false
+      },
+      "521817": {
+        "name": "【美汁源】“多汁柠柠”",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20260807/product/MS_521817_320.png",
+        "currentPrice": "13",
+        "originalPrice": "13",
+        "canWithOrder": false
+      },
+      "9900013808": {
+        "name": "猪柳蛋麦满分双人餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900013808_320.png",
+        "currentPrice": "44.9",
+        "originalPrice": "44.9",
+        "canWithOrder": false
+      },
+      "9900001086": {
+        "name": "猪柳蛋麦满分套餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20260121/product/MS_9900001086_320.png",
+        "currentPrice": "29",
+        "originalPrice": "41",
+        "canWithOrder": false
+      },
+      "9900013805": {
+        "name": "随心选麦满分双人餐",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_9900013805_320.png",
+        "currentPrice": "39",
+        "originalPrice": "60",
+        "canWithOrder": false
+      },
+      "901254": {
+        "name": "火腿扒麦满分",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_901254_320.png",
+        "currentPrice": "11.5",
+        "originalPrice": "11.5",
+        "canWithOrder": false
+      },
+      "520688": {
+        "name": "大杯鲜萃咖啡",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/20250324/product/MS_520688_320.gif",
+        "currentPrice": "13",
+        "originalPrice": "13",
+        "canWithOrder": false
+      },
+      "521734": {
+        "name": "北非蛋风味麦满分",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_521734_320.png",
+        "currentPrice": "19.5",
+        "originalPrice": "19.5",
+        "canWithOrder": false
+      },
+      "521735": {
+        "name": "北非蛋风味猪柳蛋麦满分",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_521735_320.png",
+        "currentPrice": "23.5",
+        "originalPrice": "23.5",
+        "canWithOrder": false
+      },
+      "521736": {
+        "name": "北非蛋风味脆鸡排麦满分",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_521736_320.png",
+        "currentPrice": "22",
+        "originalPrice": "22",
+        "canWithOrder": false
+      },
+      "903060": {
+        "name": "雪碧",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_G903060_320.png",
+        "currentPrice": "11",
+        "originalPrice": "11",
+        "canWithOrder": false
+      },
+      "902372": {
+        "name": "奥利奥麦旋风",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_902372_320.png",
+        "currentPrice": "16",
+        "originalPrice": "16",
+        "canWithOrder": false
+      },
+      "902373": {
+        "name": "草莓麦旋风",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_902373_320.png",
+        "currentPrice": "16",
+        "originalPrice": "16",
+        "canWithOrder": false
+      },
+      "902374": {
+        "name": "朱古力新地",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_902374_320.png",
+        "currentPrice": "13.5",
+        "originalPrice": "13.5",
+        "canWithOrder": false
+      },
+      "521981": {
+        "name": "巧克力味厚松饼猪柳蛋堡",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_521981_320.png",
+        "currentPrice": "23.5",
+        "originalPrice": "23.5",
+        "canWithOrder": false
+      },
+      "902375": {
+        "name": "草莓新地",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_902375_320.png",
+        "currentPrice": "13.5",
+        "originalPrice": "13.5",
+        "canWithOrder": false
+      },
+      "521982": {
+        "name": "巧克力味厚松饼猪柳堡",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_521982_320.png",
+        "currentPrice": "19.5",
+        "originalPrice": "19.5",
+        "canWithOrder": false
+      },
+      "905889": {
+        "name": "大脆鸡扒麦满分",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_905889_320.png",
+        "currentPrice": "11.5",
+        "originalPrice": "11.5",
+        "canWithOrder": false
+      },
+      "904437": {
+        "name": "甜香玉米杯",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_G904437_320.png",
+        "currentPrice": "14.5",
+        "originalPrice": "14.5",
+        "canWithOrder": false
+      },
+      "905888": {
+        "name": "吉士蛋麦满分",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_905888_320.png",
+        "currentPrice": "10",
+        "originalPrice": "10",
+        "canWithOrder": false
+      },
+      "903505": {
+        "name": "锡兰红茶",
+        "image": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_903505_320.png",
+        "currentPrice": "12",
+        "originalPrice": "12",
+        "canWithOrder": false
+      }
+    }
+  }
+}

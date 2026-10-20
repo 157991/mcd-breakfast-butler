@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:07:16",
+  "traceId": "764c356b6c885a2fa1f3594fb737b9ef",
+  "data": {
+    "productOriginalPrice": 1850,
+    "productPrice": 1850,
+    "deliveryOriginalPrice": 600,
+    "deliveryPrice": 600,
+    "packingOriginalPrice": 80,
+    "packingPrice": 80,
+    "originalPrice": 2530,
+    "discount": 0,
+    "price": 2530,
+    "productList": [
+      {
+        "productCode": "905022",
+        "productName": "猪柳蛋麦满分",
+        "quantity": 1,
+        "originalSubtotal": 1850,
+        "subtotal": 1850
+      },
+      {
+        "productCode": "920174",
+        "productName": "打包服务费",
+        "quantity": 8,
+        "originalSubtotal": 80,
+        "subtotal": 0
+      }
+    ]
+  }
+}

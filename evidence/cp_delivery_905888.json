@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:07:18",
+  "traceId": "96c9840ebe7ee80f576c1ae4b814d451",
+  "data": {
+    "productOriginalPrice": 1000,
+    "productPrice": 1000,
+    "deliveryOriginalPrice": 600,
+    "deliveryPrice": 600,
+    "packingOriginalPrice": 80,
+    "packingPrice": 80,
+    "originalPrice": 1680,
+    "discount": 0,
+    "price": 1680,
+    "productList": [
+      {
+        "productCode": "905888",
+        "productName": "吉士蛋麦满分",
+        "quantity": 1,
+        "originalSubtotal": 1000,
+        "subtotal": 1000
+      },
+      {
+        "productCode": "920174",
+        "productName": "打包服务费",
+        "quantity": 8,
+        "originalSubtotal": 80,
+        "subtotal": 0
+      }
+    ]
+  }
+}

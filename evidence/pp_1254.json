@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:09:25",
+  "traceId": "61fb2e053df2137fb3e3d56ad02c3946",
+  "data": {
+    "productOriginalPrice": 1100,
+    "productPrice": 1100,
+    "originalPrice": 1100,
+    "discount": 0,
+    "price": 1100,
+    "productList": [
+      {
+        "productCode": "1254",
+        "productName": "火腿扒麦满分",
+        "quantity": 1,
+        "originalSubtotal": 1100,
+        "subtotal": 1100
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

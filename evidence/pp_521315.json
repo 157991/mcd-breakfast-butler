@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:09:20",
+  "traceId": "d56388073be2499c3a26c2a81c6e3a2e",
+  "data": {
+    "productOriginalPrice": 1300,
+    "productPrice": 1300,
+    "originalPrice": 1300,
+    "discount": 0,
+    "price": 1300,
+    "productList": [
+      {
+        "productCode": "521315",
+        "productName": "芝芝火腿扒堡",
+        "quantity": 1,
+        "originalSubtotal": 1300,
+        "subtotal": 1300
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

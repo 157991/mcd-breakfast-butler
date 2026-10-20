@@ -1,0 +1,87 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:06:27",
+  "traceId": "0af9e8ec6b99360c91c21592097c0de2",
+  "data": [
+    {
+      "storeCode": "1450386",
+      "beCode": "145038602",
+      "storeName": "麦当劳上海长宁福缘湾九华餐厅",
+      "reservation": true,
+      "reservationTimeOptions": [
+        {
+          "date": "2026-10-20",
+          "today": true,
+          "reservationOptionText": "午餐(11:00至14:59)，下午茶(15:00至17:29)，夜市(17:30至23:30)"
+        },
+        {
+          "date": "2026-10-21",
+          "today": false,
+          "reservationOptionText": "早餐(07:30至10:59)，午餐(11:00至14:59)，下午茶(15:00至17:29)，夜市(17:30至23:30)"
+        },
+        {
+          "date": "2026-10-22",
+          "today": false,
+          "reservationOptionText": "早餐(07:30至10:59)，午餐(11:00至14:59)，下午茶(15:00至17:29)，夜市(17:30至23:30)"
+        }
+      ],
+      "businessStatus": true,
+      "businessStartTime": "07:00",
+      "businessEndTime": "23:00"
+    },
+    {
+      "storeCode": "1450639",
+      "beCode": "145063902",
+      "storeName": "麦当劳上海闵行红松东路餐厅",
+      "reservation": true,
+      "reservationTimeOptions": [
+        {
+          "date": "2026-10-20",
+          "today": true,
+          "reservationOptionText": "午餐(11:00至14:59)，下午茶(15:00至17:29)，夜市(17:30至23:30)"
+        },
+        {
+          "date": "2026-10-21",
+          "today": false,
+          "reservationOptionText": "早餐(07:30至10:59)，午餐(11:00至14:59)，下午茶(15:00至17:29)，夜市(17:30至23:30)"
+        },
+        {
+          "date": "2026-10-22",
+          "today": false,
+          "reservationOptionText": "早餐(07:30至10:59)，午餐(11:00至14:59)，下午茶(15:00至17:29)，夜市(17:30至23:30)"
+        }
+      ],
+      "businessStatus": true,
+      "businessStartTime": "07:00",
+      "businessEndTime": "23:00"
+    },
+    {
+      "storeCode": "1450476",
+      "beCode": "145047602",
+      "storeName": "麦当劳上海东虹桥中心友乐路餐厅",
+      "reservation": true,
+      "reservationTimeOptions": [
+        {
+          "date": "2026-10-20",
+          "today": true,
+          "reservationOptionText": "午餐(11:00至14:59)，下午茶(15:00至17:29)，夜市(17:30至23:30)"
+        },
+        {
+          "date": "2026-10-21",
+          "today": false,
+          "reservationOptionText": "早餐(07:30至10:59)，午餐(11:00至14:59)，下午茶(15:00至17:29)，夜市(17:30至23:30)"
+        },
+        {
+          "date": "2026-10-22",
+          "today": false,
+          "reservationOptionText": "早餐(07:30至10:59)，午餐(11:00至14:59)，下午茶(15:00至17:29)，夜市(17:30至23:30)"
+        }
+      ],
+      "businessStatus": true,
+      "businessStartTime": "07:00",
+      "businessEndTime": "23:00"
+    }
+  ]
+}

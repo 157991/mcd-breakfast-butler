@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:09:48",
+  "traceId": "149c879e60e7f2d5763b1ff9d6382724",
+  "data": {
+    "productOriginalPrice": 1550,
+    "productPrice": 1550,
+    "originalPrice": 1550,
+    "discount": 0,
+    "price": 1550,
+    "productList": [
+      {
+        "productCode": "513112",
+        "productName": "火腿扒早安营养卷",
+        "quantity": 1,
+        "originalSubtotal": 1550,
+        "subtotal": 1550
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:06:18",
+  "traceId": "751bcd1a011c80c144e9062d378d3303",
+  "data": {
+    "addressId": "1036586140206618117513916976",
+    "contactName": "kevin",
+    "phone": "157****7329",
+    "fullAddress": "上海市长宁区程家桥街道哈密路1940弄1-11号 锦程小区哈密路1940弄8号楼303"
+  }
+}

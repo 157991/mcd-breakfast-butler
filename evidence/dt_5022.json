@@ -1,0 +1,34 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:09:24",
+  "traceId": "c243a12abfa9f4fb79c83529f206137f",
+  "data": {
+    "code": "5022",
+    "name": "猪柳蛋麦满分",
+    "rounds": [],
+    "image": "https://menu-img.mcd.cn/pcm/prod/menu/20250705/product/MS_5022_600.png",
+    "modification": {
+      "items": [
+        {
+          "maxValues": 1,
+          "minValues": 0,
+          "values": [
+            {
+              "code": "100141",
+              "price": 0,
+              "name": "吉士",
+              "maxQuantity": 1,
+              "minQuantity": 0,
+              "selectedQuantity": 1,
+              "selectedKey": "0-1",
+              "unselectedKey": "0-0"
+            }
+          ]
+        }
+      ]
+    },
+    "supportModify": true
+  }
+}
