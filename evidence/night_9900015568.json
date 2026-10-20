@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:20:04",
+  "traceId": "e9a9e9213982314880d6ea5393f014ae",
+  "data": {
+    "productOriginalPrice": 1390,
+    "productPrice": 1390,
+    "originalPrice": 1390,
+    "discount": 0,
+    "price": 1390,
+    "productList": [
+      {
+        "productCode": "9900015568",
+        "productName": "精选超值随心配",
+        "quantity": 1,
+        "originalSubtotal": 1390,
+        "subtotal": 1390
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

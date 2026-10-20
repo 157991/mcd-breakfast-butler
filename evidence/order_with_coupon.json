@@ -1,0 +1,47 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:26:48",
+  "traceId": "2fb3ea7512d674bb5db03883fd3b0bfc",
+  "data": {
+    "orderId": "1030575870000795821864531112",
+    "payId": "111032600768818987008",
+    "payH5Url": "https://m.mcd.cn/mcp/scanToPay?orderId=1030575870000795821864531112",
+    "orderDetail": {
+      "orderId": "1030575870000795821864531112",
+      "orderStatus": "待支付",
+      "status": "10",
+      "storeName": "麦当劳上海长宁福缘湾九华餐厅",
+      "storeAddress": "淞虹路938号",
+      "orderProductList": [
+        {
+          "productName": "麦咖啡™冰美式中杯",
+          "productImage": "https://menu-img.mcd.cn/pcm/prod/menu/20250804/product/MS_507411_320.png",
+          "quantity": 1,
+          "price": "19",
+          "comboItemList": []
+        }
+      ],
+      "totalAmount": "19",
+      "realTotalAmount": "9.9",
+      "totalDiscountAmount": "9.1",
+      "couponList": [
+        {
+          "couponName": "9.9元中杯冰美式",
+          "discountAmount": "9.1"
+        }
+      ],
+      "createTime": "2026-10-20 10:26:48",
+      "deliveryPrice": "0",
+      "realDeliveryPrice": "0",
+      "needTableware": false,
+      "productPrice": "19",
+      "takeWay": "外带",
+      "pickupCode": "",
+      "expirePayTime": "2026-10-20 10:41:48",
+      "payId": "111032600768818987008",
+      "remark": ""
+    }
+  }
+}

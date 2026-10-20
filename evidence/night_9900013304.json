@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:20:04",
+  "traceId": "370a7294897371c8009117c3e967a7dc",
+  "data": {
+    "productOriginalPrice": 1490,
+    "productPrice": 1490,
+    "originalPrice": 1490,
+    "discount": 0,
+    "price": 1490,
+    "productList": [
+      {
+        "productCode": "9900013304",
+        "productName": "人气经典随心配",
+        "quantity": 1,
+        "originalSubtotal": 1490,
+        "subtotal": 1490
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

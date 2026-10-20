@@ -2,21 +2,21 @@
   "success": true,
   "code": 200,
   "message": "请求成功",
-  "datetime": "2026-10-20 10:10:04",
-  "traceId": "41eba51ea7057bee3a5004e3e5a07848",
+  "datetime": "2026-10-20 10:29:03",
+  "traceId": "3a602339fd307fa9bb92fe63df0c3d9d",
   "data": {
-    "productOriginalPrice": 1550,
-    "productPrice": 1550,
-    "originalPrice": 1550,
+    "productOriginalPrice": 1390,
+    "productPrice": 1390,
+    "originalPrice": 1390,
     "discount": 0,
-    "price": 1550,
+    "price": 1390,
     "productList": [
       {
-        "productCode": "9900005470",
-        "productName": "雪菜脆笋鸡肉粥套餐",
+        "productCode": "9900015568",
+        "productName": "精选超值随心配",
         "quantity": 1,
-        "originalSubtotal": 1550,
-        "subtotal": 1550
+        "originalSubtotal": 1390,
+        "subtotal": 1390
       }
     ],
     "takeWayList": [

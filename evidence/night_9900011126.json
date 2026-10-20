@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:20:05",
+  "traceId": "d83d820ee6bb76702e5cfd05c6184052",
+  "data": {
+    "productOriginalPrice": 2000,
+    "productPrice": 2000,
+    "originalPrice": 2000,
+    "discount": 0,
+    "price": 2000,
+    "productList": [
+      {
+        "productCode": "9900011126",
+        "productName": "酥脆无双套餐",
+        "quantity": 1,
+        "originalSubtotal": 2000,
+        "subtotal": 2000
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

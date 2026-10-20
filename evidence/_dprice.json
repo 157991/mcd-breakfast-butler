@@ -1,0 +1,41 @@
+{
+  "pick": [
+    9.0,
+    "902585",
+    "雪菜脆笋鸡肉粥"
+  ],
+  "price": {
+    "success": true,
+    "code": 200,
+    "message": "请求成功",
+    "datetime": "2026-10-20 10:27:33",
+    "traceId": "64025f5ebd5cadeb2bb3bbed0deaf32b",
+    "data": {
+      "productOriginalPrice": 900,
+      "productPrice": 900,
+      "deliveryOriginalPrice": 600,
+      "deliveryPrice": 600,
+      "packingOriginalPrice": 80,
+      "packingPrice": 80,
+      "originalPrice": 1580,
+      "discount": 0,
+      "price": 1580,
+      "productList": [
+        {
+          "productCode": "902585",
+          "productName": "雪菜脆笋鸡肉粥",
+          "quantity": 1,
+          "originalSubtotal": 900,
+          "subtotal": 900
+        },
+        {
+          "productCode": "920174",
+          "productName": "打包服务费",
+          "quantity": 8,
+          "originalSubtotal": 80,
+          "subtotal": 0
+        }
+      ]
+    }
+  }
+}

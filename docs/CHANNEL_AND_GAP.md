@@ -73,7 +73,7 @@
 
 ### 但这张"免费脆薯饼"落不了地
 
-三处证据链：
+三处证据链（**这三条后来被实测推翻了，保留原文以记录错误**）：
 
 1. **`query-store-coupons` 不返回它。**
    查 `storeCode=1450386 / orderType=1`，只返回 3 张：
@@ -81,26 +81,55 @@
    **全部是咖啡，没有一张早餐主食券。**
 2. **`calculate-price` 不会自动抵扣。**
    单点脆薯饼，返回 `originalPrice=800, discount=0, price=800` —— 还是 ¥8.00。
-3. **`create-order` 根本没有传券的入口。**
+3. ~~**`create-order` 根本没有传券的入口。**~~
    参数表里没有 `couponId` / `couponCode` / `promotionId` 任何一个字段。
    实际下单返回的 `orderDetail.couponList` 是 **`[]`**。
 
-### 所以真实边界是
+### ⚠️ 更正：上面第 3 条是错的，券可以进单
+
+错误来源很具体：我只读了参数 schema 的**顶层** `properties`，
+没往下看 `items[]` 的子结构。`couponId` / `couponCode` 在 **每一项商品**里：
+
+```json
+"items": [{
+  "productCode": "507411",
+  "quantity": 1,
+  "couponId":   "264B97DBE02BE6CF996AA6914151C4A9",   // ← 就在这里
+  "couponCode": "MCD60X690E1031V9K0E80"
+}]
+```
+
+传了之后的实测结果（订单 `1030575870000795821864531112`，已取消）：
+
+| 字段 | 无券 | 带券 |
+|---|---|---|
+| `calculate-price` 的 `price` | 1190（另有活动） | **990** |
+| `discount` | 710 | **910** |
+| 订单 `totalAmount` | — | 19（元） |
+| 订单 `totalDiscountAmount` | — | **9.1** |
+| 订单 `realTotalAmount` | — | **9.9** |
+| 订单 `couponList` | `[]` | **`[{"couponName":"9.9元中杯冰美式","discountAmount":"9.1"}]`** |
+
+另一组对照（奶铁中杯，7 折券）：原价 2100 → 实付 **1470**，`discount=630`。
+
+**所以之前的"券进不了单"是把"我没传参数"误当成"接口不支持"。这是本轮最严重的判断错误。**
+
+### 真实边界（更正后）
 
 | 能力 | 能否做到 |
 |---|---|
 | 一键领取全部麦麦省券 | ✅ `auto-bind-coupons`，5/5 成功 |
-| 查"我有哪些券" | ✅ `query-my-coupons` |
-| 查"这家店这单能用哪些券" | ✅ `query-store-coupons`（会做门店/渠道校验） |
-| 查询可领取的券 | ✅ `available-coupons` |
-| **把券应用到订单** | ❌ **做不到** |
-| **验证券能省多少钱** | ❌ **做不到**（`discount` 恒为 0） |
+| 查"我有哪些券" | ✅ `query-my-coupons`（但只给 Markdown，**没有 couponId**） |
+| 查"这家店这单能用哪些券" | ✅ `query-store-coupons`（**couponId + couponCode + 绑定商品码都在这里**） |
+| **把券应用到订单** | ✅ **`items[i].couponId` + `couponCode`，实测减价 9.1 元** |
+| **验证券能省多少钱** | ✅ `calculate-price` 传券后 `discount` 立即变化 |
 
-**正确做法：领券必须做（免费且可积累），但必须在交付时明确告诉用户
-"券要在支付页手动勾选"**，不能声称"我已经帮你用券下单了"。
+两条必须记住的限制：
 
-本项目里那句"有优惠不用是纯傻子"因此只能兑现一半：
-券帮你领到手，最后一步勾选必须你亲手做。
+1. **券是单品级绑定**，不是通用折扣。每张券都带 `products[].productCode`，
+   免费脆薯饼券只能抵薯饼，抵不了套餐里的薯饼。**套餐内的商品通常无法用券，单点才可用。**
+2. **`query-my-coupons` 拿不到 `couponId`**，只有 `query-store-coupons` 有。
+   要下单用券，必须走后者，且传 `storeCode` + `orderType`。
 
 ---
 

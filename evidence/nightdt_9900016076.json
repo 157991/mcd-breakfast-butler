@@ -1,0 +1,7 @@
+{
+  "success": false,
+  "code": 60001,
+  "message": "未匹配到商品，请重新拉取全量商品列表",
+  "datetime": "2026-10-20 10:20:05",
+  "traceId": "48e286e276c5c30f9c2840dcfbdf04c0"
+}

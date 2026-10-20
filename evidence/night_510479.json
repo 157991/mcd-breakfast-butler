@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:20:09",
+  "traceId": "a8b5965ab89362f3ad456164bae3935a",
+  "data": {
+    "productOriginalPrice": 2300,
+    "productPrice": 2300,
+    "originalPrice": 2300,
+    "discount": 0,
+    "price": 2300,
+    "productList": [
+      {
+        "productCode": "510479",
+        "productName": "冰燕麦奶铁中杯",
+        "quantity": 1,
+        "originalSubtotal": 2300,
+        "subtotal": 2300
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

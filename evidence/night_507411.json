@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:20:07",
+  "traceId": "6db15cb4ccca57bbb9a7b6d14a2042e0",
+  "data": {
+    "productOriginalPrice": 1900,
+    "productPrice": 1190,
+    "originalPrice": 1900,
+    "discount": 710,
+    "price": 1190,
+    "productList": [
+      {
+        "productCode": "507411",
+        "productName": "麦咖啡™冰美式中杯",
+        "quantity": 1,
+        "originalSubtotal": 1900,
+        "subtotal": 1190
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

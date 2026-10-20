@@ -2,21 +2,21 @@
   "success": true,
   "code": 200,
   "message": "请求成功",
-  "datetime": "2026-10-20 10:08:02",
-  "traceId": "ed44f111ea503a05c5930007be1fbccf",
+  "datetime": "2026-10-20 10:20:05",
+  "traceId": "f6e00c590293ed816cd5b2939857b68e",
   "data": {
-    "productOriginalPrice": 800,
-    "productPrice": 800,
-    "originalPrice": 800,
+    "productOriginalPrice": 1190,
+    "productPrice": 1190,
+    "originalPrice": 1190,
     "discount": 0,
-    "price": 800,
+    "price": 1190,
     "productList": [
       {
-        "productCode": "4825",
-        "productName": "脆薯饼",
+        "productCode": "9900016077",
+        "productName": "蘸酱炸鸡",
         "quantity": 1,
-        "originalSubtotal": 800,
-        "subtotal": 800
+        "originalSubtotal": 1190,
+        "subtotal": 1190
       }
     ],
     "takeWayList": [

@@ -1,0 +1,72 @@
+[
+  {
+    "code": "9900015568",
+    "name": "精选超值随心配",
+    "cents": 1390,
+    "ok": true,
+    "rounds": []
+  },
+  {
+    "code": "9900013304",
+    "name": "人气经典随心配",
+    "cents": 1490,
+    "ok": true,
+    "rounds": []
+  },
+  {
+    "code": "9900011126",
+    "name": "酥脆无双套餐",
+    "cents": 2000,
+    "ok": true,
+    "rounds": []
+  },
+  {
+    "code": "9900011123",
+    "name": "“辣”么快乐套餐",
+    "cents": 2400,
+    "ok": true,
+    "rounds": []
+  },
+  {
+    "code": "9900016076",
+    "name": "“我就喜欢”鸡薯双全盒",
+    "cents": 1590,
+    "ok": true,
+    "rounds": []
+  },
+  {
+    "code": "9900016077",
+    "name": "蘸酱炸鸡",
+    "cents": 1190,
+    "ok": true,
+    "rounds": []
+  },
+  {
+    "code": "9900016073",
+    "name": "龙焰鸡腿堡三件套",
+    "cents": 2690,
+    "ok": true,
+    "rounds": []
+  },
+  {
+    "code": "507411",
+    "name": "麦咖啡™美式",
+    "cents": 1190,
+    "ok": true,
+    "rounds": []
+  },
+  {
+    "code": "520689",
+    "name": "鲜萃咖啡",
+    "cents": 950,
+    "ok": true,
+    "rounds": []
+  },
+  {
+    "code": "510479",
+    "name": "燕麦奶铁",
+    "cents": 2300,
+    "ok": true,
+    "rounds": []
+  }
+]

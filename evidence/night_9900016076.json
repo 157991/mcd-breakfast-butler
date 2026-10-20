@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:20:05",
+  "traceId": "3294358ebb26e27456410816cd7be6c2",
+  "data": {
+    "productOriginalPrice": 1590,
+    "productPrice": 1590,
+    "originalPrice": 1590,
+    "discount": 0,
+    "price": 1590,
+    "productList": [
+      {
+        "productCode": "9900016076",
+        "productName": "“我就喜欢”鸡薯双全盒",
+        "quantity": 1,
+        "originalSubtotal": 1590,
+        "subtotal": 1590
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

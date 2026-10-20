@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:20:07",
+  "traceId": "133b246c4ede657003a3e44adbad2d8d",
+  "data": {
+    "productOriginalPrice": 2690,
+    "productPrice": 2690,
+    "originalPrice": 2690,
+    "discount": 0,
+    "price": 2690,
+    "productList": [
+      {
+        "productCode": "9900016073",
+        "productName": "龙焰鸡腿堡三件套",
+        "quantity": 1,
+        "originalSubtotal": 2690,
+        "subtotal": 2690
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

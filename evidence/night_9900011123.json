@@ -1,0 +1,35 @@
+{
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-20 10:20:05",
+  "traceId": "dde7d72970de0fee668536322b16bdfb",
+  "data": {
+    "productOriginalPrice": 2400,
+    "productPrice": 2400,
+    "originalPrice": 2400,
+    "discount": 0,
+    "price": 2400,
+    "productList": [
+      {
+        "productCode": "9900011123",
+        "productName": "“辣”么快乐套餐",
+        "quantity": 1,
+        "originalSubtotal": 2400,
+        "subtotal": 2400
+      }
+    ],
+    "takeWayList": [
+      {
+        "code": "eat-in",
+        "title": "堂食",
+        "subtitle": "店内用餐"
+      },
+      {
+        "code": "take-in-store",
+        "title": "外带",
+        "subtitle": "店内自提"
+      }
+    ]
+  }
+}

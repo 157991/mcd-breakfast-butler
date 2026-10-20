@@ -101,7 +101,11 @@ python scripts/planner.py --date <明天>
 |---|---|---|
 | **套餐默认项看 `quantity` 不看 `isDefault`** | `detail` 里 `isDefault=1` 的选项 `quantity` 可能是 0，而真实订单给的是 `quantity>0` 的那个。反例：「小杯鲜萃咖啡」`isDefault=1, quantity=0`；「鲜萃冰咖」`isDefault=0, quantity=1`；订单 `comboItemList` 给的是冰咖 | 拆套餐时取 `quantity>0` 的项，`isDefault` 只作兜底 |
 | **支付只有 15 分钟** | `createTime` → `expirePayTime` 恰好 15 分钟，与 `reservationDate` 无关。预约明早 7:00 的单，现在不付就作废 | 不能"前一晚下单、明早直接取"；要么起床前 15 分钟内下单，要么停在下单前一步 |
-| **券领得到，但进不了订单** | `create-order` 参数里没有 `couponId`/`promotionId` 任何字段；`calculate-price` 点脆薯饼返回 `discount=0`；真实订单 `orderDetail.couponList` 是 `[]`。`auto-bind-coupons` 能一次领全 5 张 | 领券照做（免费），但交付时必须写"券请在支付页手动勾选"，**不得声称已帮你用券** |
+| **`query-meal-detail` 夜市值必须带 `reservationDate`** | 不传会报「未匹配到商品，请重新拉取全量商品列表」。早餐时段不传也能成功，所以这个坑很容易漏 | 一律带上 `reservationDate`，与 `query-meals` 保持一致 |
+| **菜单价虚标不只发生在早餐** | 夜市时段「燕麦奶铁」菜单价 ¥9.9，实付 **¥23.00**（差 ¥13.1），因为那是「随单购」价。而「麦咖啡美式」菜单价 ¥11.9 = 实付 ¥11.9 | 任何时段都只用 `calculate-price`；菜单价永远只当参考 |
+| **想喝热咖啡时，随心配 1+1 做不到** | `精选超值随心配 ¥13.9` 的粉区 16 项里，咖啡只有「鲜萃冰咖」，没有热咖啡。含热美式的最低组合是 `酥脆无双套餐 ¥20`（500 大卡套餐） | 用户明确要热饮时，直接跳到 `500大卡套餐` 或 `三件套`，别在随心配里绕 |
+| **券要手动传，传了才生效** | `couponId`/`couponCode` 不在参数顶层，而在 **`items[]` 的每一项里**（下单与计价都是）。不传就是不减价，`discount` 恒为 0、订单 `couponList` 为空 —— 这不是"接口不支持券"，是"没传券" | 从 `query-store-coupons` 取 `couponId`+`couponCode`，塞进对应商品的 `items[i]`。实测冰美式 ¥19.00 → ¥9.90，订单 `couponList=[{discountAmount:"9.1"}]` |
+| 券是**单品级绑定**，不是通用折扣 | `query-store-coupons` 返回的每张券都带 `products[].productCode`。免费脆薯饼券只能抵薯饼，抵不了套餐 | 先按 `productCode` 反查可用券；套餐内商品通常不可用券，单点才可用 |
 | **外送每单固定多 ¥6.80** | `deliveryPrice=600`（配送 ¥6）+ `packingPrice=80`（打包 ¥0.8），再加商品本身加价 ¥0.5–1.5。实测火腿扒麦满分 到店 ¥11 → 外送 ¥18.30（+66%） | 先问要不要送到家。早餐这种小额订单，外送溢价比例极高 |
 | **早餐套餐默认全配鲜萃冰咖** | 实测 6 个套餐/组合，5 个默认含「鲜萃冰咖」，剩下 1 个含美式。唯一不含冷饮的三件套是「雪菜脆笋鸡肉粥套餐」（粥+油条+薯饼） | 忌冰 / 宿醉场景下，**套餐几乎全灭**，必须转单点或粥类 |
 | 取餐方式不一定有柜 | `takeWayList` 实测只返回 `eat-in` + `take-in-store`，**该门店没有 `locker-in`**。`locker-in` 是到店开柜自取，不是"送到家" | 从返回的 `takeWayList` 里选，不要假设一定有柜子 |
