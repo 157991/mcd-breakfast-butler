@@ -1,7 +1,55 @@
 {
-  "success": false,
-  "code": 600039,
-  "message": "今日下单数已经上限",
-  "datetime": "2026-10-20 11:33:12",
-  "traceId": "9e0c51545e252dfd9594f2139da933d4"
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-21 00:06:27",
+  "traceId": "ff62b8173f5038f8ae5581f05f20d13c",
+  "data": {
+    "orderId": "1030882040000795834812345660",
+    "payId": "111032807040640049152",
+    "payH5Url": "https://m.mcd.cn/mcp/scanToPay?orderId=1030882040000795834812345660",
+    "orderDetail": {
+      "orderId": "1030882040000795834812345660",
+      "orderStatus": "待支付",
+      "status": "10",
+      "storeName": "麦当劳上海长宁福缘湾九华餐厅",
+      "storeAddress": "淞虹路938号",
+      "orderProductList": [
+        {
+          "productName": "猪柳蛋麦满分套餐",
+          "productImage": "https://menu-img.mcd.cn/pcm/prod/menu/20260422/product/MS_9900003458_320.png",
+          "quantity": 1,
+          "price": "26",
+          "comboItemList": [
+            {
+              "itemName": "猪柳蛋麦满分",
+              "itemQuantity": 1
+            },
+            {
+              "itemName": "脆薯饼",
+              "itemQuantity": 1
+            },
+            {
+              "itemName": "阳光柠檬红茶大杯 冰(去冰)",
+              "itemQuantity": 1
+            }
+          ]
+        }
+      ],
+      "totalAmount": "26",
+      "realTotalAmount": "26",
+      "totalDiscountAmount": "0",
+      "couponList": [],
+      "createTime": "2026-10-21 00:06:27",
+      "deliveryPrice": "0",
+      "realDeliveryPrice": "0",
+      "needTableware": false,
+      "productPrice": "26",
+      "takeWay": "外带",
+      "pickupCode": "",
+      "expirePayTime": "2026-10-21 00:21:27",
+      "payId": "111032807040640049152",
+      "remark": ""
+    }
+  }
 }

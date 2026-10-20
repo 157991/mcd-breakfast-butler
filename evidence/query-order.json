@@ -2,41 +2,49 @@
   "success": true,
   "code": 200,
   "message": "请求成功",
-  "datetime": "2026-10-20 10:26:57",
-  "traceId": "168495e19c289e8211fa679e1d291091",
+  "datetime": "2026-10-21 00:06:36",
+  "traceId": "6a8df40c07d6bcf031e5e7f612727722",
   "data": {
-    "orderId": "1030575870000795821864531112",
+    "orderId": "1030882040000795834812345660",
     "orderStatus": "订单已取消",
     "status": "60",
     "storeName": "麦当劳上海长宁福缘湾九华餐厅",
     "storeAddress": "淞虹路938号",
     "orderProductList": [
       {
-        "productName": "麦咖啡™冰美式中杯",
-        "productImage": "https://menu-img.mcd.cn/pcm/prod/menu/20250804/product/MS_507411_320.png",
+        "productName": "猪柳蛋麦满分套餐",
+        "productImage": "https://menu-img.mcd.cn/pcm/prod/menu/20260422/product/MS_9900003458_320.png",
         "quantity": 1,
-        "price": "19",
-        "comboItemList": []
+        "price": "26",
+        "comboItemList": [
+          {
+            "itemName": "猪柳蛋麦满分",
+            "itemQuantity": 1
+          },
+          {
+            "itemName": "脆薯饼",
+            "itemQuantity": 1
+          },
+          {
+            "itemName": "阳光柠檬红茶大杯 冰(去冰)",
+            "itemQuantity": 1
+          }
+        ]
       }
     ],
-    "totalAmount": "19",
-    "realTotalAmount": "9.9",
-    "totalDiscountAmount": "9.1",
-    "couponList": [
-      {
-        "couponName": "9.9元中杯冰美式",
-        "discountAmount": "9.1"
-      }
-    ],
-    "createTime": "2026-10-20 10:26:48",
+    "totalAmount": "26",
+    "realTotalAmount": "26",
+    "totalDiscountAmount": "0",
+    "couponList": [],
+    "createTime": "2026-10-21 00:06:27",
     "deliveryPrice": "0",
     "realDeliveryPrice": "0",
     "needTableware": false,
-    "productPrice": "19",
+    "productPrice": "26",
     "takeWay": "外带",
     "pickupCode": "",
-    "expirePayTime": "2026-10-20 10:41:48",
-    "payId": "111032600768818987008",
+    "expirePayTime": "2026-10-21 00:21:27",
+    "payId": "111032807040640049152",
     "remark": ""
   }
 }

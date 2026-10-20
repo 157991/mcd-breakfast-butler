@@ -2,21 +2,21 @@
   "success": true,
   "code": 200,
   "message": "请求成功",
-  "datetime": "2026-10-20 11:33:12",
-  "traceId": "22acf77fa9ba683d19514dfb388440ca",
+  "datetime": "2026-10-21 00:06:26",
+  "traceId": "7e073231affe74ecc44066189259951f",
   "data": {
-    "productOriginalPrice": 2950,
-    "productPrice": 2950,
-    "originalPrice": 2950,
+    "productOriginalPrice": 2600,
+    "productPrice": 2600,
+    "originalPrice": 2600,
     "discount": 0,
-    "price": 2950,
+    "price": 2600,
     "productList": [
       {
         "productCode": "9900003458",
         "productName": "猪柳蛋麦满分套餐",
         "quantity": 1,
-        "originalSubtotal": 2950,
-        "subtotal": 2950
+        "originalSubtotal": 2600,
+        "subtotal": 2600
       }
     ],
     "takeWayList": [
