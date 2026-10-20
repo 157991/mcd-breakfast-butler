@@ -1,0 +1,59 @@
+{
+  "seq": 6,
+  "label": "核价 大脆鸡扒麦满分",
+  "tool": "calculate-price",
+  "args": {
+    "storeCode": "1450034",
+    "orderType": 1,
+    "beType": 1,
+    "reservationDate": "2026-10-21 07:00",
+    "items": [
+      {
+        "productCode": "5889",
+        "quantity": 1
+      }
+    ]
+  },
+  "started_at": "2026-10-20T09:52:19",
+  "elapsed_ms": 197,
+  "ok": true,
+  "error": null,
+  "traceId": "5599f65d9d78b1dac1ce351b311ab9f2",
+  "code": 200,
+  "success": true,
+  "response": {
+    "success": true,
+    "code": 200,
+    "message": "请求成功",
+    "datetime": "2026-10-20 09:52:20",
+    "traceId": "5599f65d9d78b1dac1ce351b311ab9f2",
+    "data": {
+      "productOriginalPrice": 1150,
+      "productPrice": 1150,
+      "originalPrice": 1150,
+      "discount": 0,
+      "price": 1150,
+      "productList": [
+        {
+          "productCode": "5889",
+          "productName": "大脆鸡扒麦满分",
+          "quantity": 1,
+          "originalSubtotal": 1150,
+          "subtotal": 1150
+        }
+      ],
+      "takeWayList": [
+        {
+          "code": "eat-in",
+          "title": "堂食",
+          "subtitle": "店内用餐"
+        },
+        {
+          "code": "locker-in",
+          "title": "外带",
+          "subtitle": "店内取餐柜"
+        }
+      ]
+    }
+  }
+}

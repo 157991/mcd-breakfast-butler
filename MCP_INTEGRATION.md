@@ -25,8 +25,8 @@
 |---|---|---|---|
 | `query-nearby-stores` | 定位用户常去的门店，拿到 `storeCode` 与 `beCode` | `beType=1`、`searchType=2`、`city`、`keyword` | 返回 `reservationTimeOptions`，内含**门店实际的早餐时段**（实测门店为 `06:44–10:15`），且通常只给**今明两天** |
 | `query-meals` | 拉取指定时段在售菜单 | `storeCode`、`orderType=1`、`beType=1`、`reservationDate` | 返回 `categories[]`（分类下只给 code+tags）与 `meals{}`（code→名称/价格）。**没有任何营养字段**，且 `currentPrice` 是"随单购早餐卡"优惠价，不等于真实售价 |
-| `query-meal-detail` | 把套餐拆成单品，用于热量加总 | `storeCode`、`orderType`、`beType`、`code` | 返回 `rounds[].choices[]`，每个 choice 带 `code / quantity / isDefault / diffPrice`。**`isDefault=1` 即套餐的默认组成**，这是热量可算的关键 |
-| `calculate-price` | 获取权威价格、取餐方式、优惠 | `storeCode`、`orderType`、`beType`、`items[]`、`reservationDate` | 金额单位为**分**（2550 = ¥25.50）。`takeWayList` 返回可选取餐方式（`eat-in` 堂食 / `locker-in` 取餐柜），其 `code` 是 `create-order` 的 `takeWayCode` 来源 |
+| `query-meal-detail` | 把套餐拆成单品，用于热量加总 | `storeCode`、`orderType`、`beType`、`code`（**不是 `mealCode`**） | 返回 `rounds[].choices[]`，每个 choice 带 `code / quantity / isDefault / diffPrice`。⚠️ **默认组成要取 `quantity>0`，不是 `isDefault=1`** —— 真机下单证明二者可能指向不同商品，见下文 |
+| `calculate-price` | 获取权威价格、取餐方式、优惠 | `storeCode`、`orderType`、`beType`、`items[]`、`reservationDate` | 金额在 **`data.price`**，单位是**分**（1350 = ¥13.50）。`takeWayList` 返回 `code`（`eat-in` 堂食 / `locker-in` 取餐柜）+ `title`，其 `code` 是 `create-order` 的 `takeWayCode` 来源 |
 | `list-nutrition-foods` | 官方营养数据源 | 无参数 | 一次返回 **160 条**，格式为**以中文名为键的文本表**，字段 `energyKj / energyKcal / protein / fat / carbohydrate / sodium / calcium`。**无商品编码、无份量字段** |
 | `query-store-coupons` | 门店维度可用券（结构化） | `storeCode`、`orderType`、`beType`、`reservationDate` | 返回 `couponId / couponCode / products[].productCode`，可直接用于 `calculate-price` 的 `items[].couponId` |
 | `query-my-coupons` | 账户维度券 | 无参数 | 只返回 Markdown 文本（含图片），**没有结构化 couponId**，不能直接用于计价。需要券码时优先用 `query-store-coupons` |
@@ -59,9 +59,9 @@
 3. query-meals(storeCode, orderType=1, beType=1, reservationDate="YYYY-MM-DD HH:mm")
    └─ 得到当日在售：categories[] + meals{code: {name, currentPrice, tags}}
 
-4. 对每个早餐候选（scripts/resolver.py）
+4. 对每个菜单候选（scripts/resolver.py）
    ├─ a. list-nutrition-foods（进程内缓存 160 条）按中文名精确匹配 → 命中即得官方 kcal
-   ├─ b. 未命中则 query-meal-detail(code) → 取 rounds[].choices[isDefault=1]
+   ├─ b. 未命中则 query-meal-detail(code) → 取 rounds[].choices[quantity>0]
    │     └─ 组成里的每个单品再回 a 匹配 → 全部命中才加总
    │     └─ 部分命中一律判为「无官方数据」，不输出残缺合计
    └─ c. 仍未命中 → 标记 missing（热量未知），不得参与热量预算
@@ -103,24 +103,58 @@
 
 ### 3. 营养库与菜单的键不相交
 
-菜单只有 `code`，营养库只有中文名。这不是"匹配一下就行"，而是有量化成本的：
+菜单只有 `code`，营养库只有中文名。这不是"匹配一下就行"，而是有量化成本的。
+下表是真机复测（门店 1450034，`2026-10-21 07:00`，菜单全量 100 项）：
 
 | 处理方式 | 可算热量餐品 | 占比 |
 |---|---|---|
-| 仅单品名称精确匹配 | 11 / 70 | 16% |
-| + 套餐拆解（`query-meal-detail`） | 32 / 70 | **46%** |
-| 完全无官方数据 | 20 / 70 | 29% |
+| 仅单品名称精确匹配 | 23 / 100 | 23% |
+| + 套餐完整拆解 | 30 / 100 | **30%** |
+| 组合想拆但营养库缺件 | 32 / 100 | 不可用 |
+| 营养库完全无条目 | 38 / 100 | 不可用 |
 
-套餐拆解是本项目对 MCP 能力的关键利用方式：`rounds[].choices[isDefault=1]` 给出默认组成，
-把「套餐」还原成营养库里存在的单品再求和。实测示例：
+套餐拆解是本项目对 MCP 能力的关键利用方式：把「套餐」还原成营养库里存在的单品再求和。实测示例：
 
 ```
 猪柳蛋麦满分套餐 546 kcal
   = 猪柳蛋麦满分 387 + 脆薯饼 + 大杯鲜萃咖啡
 ```
 
+**但拆解有一个致命前提：取哪个 choice。**
+
+```
+套餐「大脆鸡扒麦满分组合」的饮品组：
+    小杯鲜萃咖啡   isDefault=1   quantity=0
+    鲜萃冰咖       isDefault=0   quantity=1
+```
+
+第一版按 `isDefault=1` 取，得到「小杯鲜萃咖啡」（热），覆盖率算出 46%。
+真机下单后，订单 `comboItemList` 显示的却是 **鲜萃冰咖** —— `create-order` 认的是 `quantity>0`。
+
+**所以 46% 是错的，30% 才是真实的。** 按 `isDefault` 取会带来两个后果：
+热量把冰饮当热咖啡（数值错），以及「不要冰」这类忌口词直接漏检（合规错）。
+后者更危险：选出来的商品看起来完全合规。
+
+缺失集中在**饮品**（鲜萃冰咖、冰美式、冰奶铁、怡泉+C、美汁源），而饮品是套餐的必选项 ——
+这就是为什么 32 个组合"想拆却拆不动"：主料能对上，饮品对不上，整份合计就不可用。
+
 对照：若把「套餐」误按单品匹配，会得到 387 kcal —— 低估 159 kcal，且方向恒定偏低估，
 会让系统误判"今天还剩很多额度"。这类偏差比随机误差更危险，必须从规则上禁止。
+
+### 3b. 预约不推迟付款，支付只有 15 分钟
+
+真机订单的时间戳：
+
+```
+reservationDate  2026-10-21 07:00     ← 取餐在明早
+createTime       2026-10-20 09:52:22   ← 下单在现在
+expirePayTime    2026-10-20 10:07:22   ← 15 分钟后过期
+```
+
+`reservationDate` 只锁**取餐时间**，不锁付款时间。下单即开始 15 分钟倒计时。
+
+**"前一晚 22:00 自动下单、明早直接去取"在接口层面不成立。**
+任何声称能做到的产品，要么没跑过真机，要么在偷偷代扣款。
 
 ### 4. 参数互斥会造成硬失败
 
@@ -135,7 +169,7 @@
 
 | MCP 提供 | 本项目补上 |
 |---|---|
-| 当日在售 70 个早餐餐品 | 从 70 个里收敛到 1 个，且不需要用户做选择 |
+| 当日在售 100 个餐品 | 从 100 个里收敛到 1 个，且不需要用户做选择 |
 | 官方营养数据（按名称） | 套餐拆解后与可售餐品对齐，给出该餐品的真实热量 |
 | 预约时段与价格 | 把时段、预算、热量区间、口味、当日情境合成一个可行解 |
 | 券与优惠 | 在热量区间内比价，而不是为了省钱牺牲热量目标 |

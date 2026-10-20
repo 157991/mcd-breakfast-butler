@@ -1,0 +1,67 @@
+{
+  "seq": 11,
+  "label": "创建订单(预约)",
+  "tool": "create-order",
+  "args": {
+    "storeCode": "1450034",
+    "orderType": 1,
+    "beType": 1,
+    "takeWayCode": "locker-in",
+    "reservationDate": "2026-10-21 07:00",
+    "items": [
+      {
+        "productCode": "5889",
+        "quantity": 1
+      }
+    ]
+  },
+  "started_at": "2026-10-20T09:52:21",
+  "elapsed_ms": 382,
+  "ok": true,
+  "error": null,
+  "traceId": "f82760025dec4be5425f53bf5c400d14",
+  "code": 200,
+  "success": true,
+  "response": {
+    "success": true,
+    "code": 200,
+    "message": "请求成功",
+    "datetime": "2026-10-20 09:52:22",
+    "traceId": "f82760025dec4be5425f53bf5c400d14",
+    "data": {
+      "orderId": "1030525170000795821281521101",
+      "payId": "111032592106889216000",
+      "payH5Url": "https://m.mcd.cn/mcp/scanToPay?orderId=1030525170000795821281521101",
+      "orderDetail": {
+        "orderId": "1030525170000795821281521101",
+        "orderStatus": "待支付",
+        "status": "10",
+        "storeName": "麦当劳上海徐家汇餐厅",
+        "storeAddress": "天钥桥路1号（徐家汇1#店）",
+        "orderProductList": [
+          {
+            "productName": "大脆鸡扒麦满分",
+            "productImage": "https://menu-img.mcd.cn/pcm/prod/menu/ProductPool/product/MS_5889_320.png",
+            "quantity": 1,
+            "price": "11.5",
+            "comboItemList": []
+          }
+        ],
+        "totalAmount": "11.5",
+        "realTotalAmount": "11.5",
+        "totalDiscountAmount": "0",
+        "couponList": [],
+        "createTime": "2026-10-20 09:52:22",
+        "deliveryPrice": "0",
+        "realDeliveryPrice": "0",
+        "needTableware": false,
+        "productPrice": "11.5",
+        "takeWay": "外带",
+        "pickupCode": "",
+        "expirePayTime": "2026-10-20 10:07:22",
+        "payId": "111032592106889216000",
+        "remark": ""
+      }
+    }
+  }
+}

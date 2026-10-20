@@ -98,6 +98,26 @@ SUBJECT_NOISE = ("套餐", "组合", "超值", "精选", "二件套", "三件套
                  "中杯", "大杯", "小杯", "（冰/热）", "(冰/热)", "™")
 
 
+def haystack(it: dict) -> str:
+    """把餐品名与它的实际组成拼成同一个可匹配面。
+
+    禁用词（忌口、过敏、情境）必须在**这个面**上匹配，而不是只在商品名上。
+    原因是真实订单里踩到的坑：候选叫「大脆鸡扒麦满分组合」，用户说「不要冰咖啡」，
+    商品名里没有「冰」字，规则放行；而它拆出来的组成里第二个就是「鲜萃冰咖」。
+    """
+    parts = [it.get("name") or ""]
+    for p in (it.get("parts") or []):
+        n = p.get("name")
+        if n:
+            parts.append(n)
+    return " ".join(parts)
+
+
+def looks_combo(name: str) -> bool:
+    return any(s in (name or "") for s in
+               ("套餐", "组合", "件套", "超值", "双人餐", "单人餐"))
+
+
 def subject(name: str) -> str:
     """抽取餐品的「主体名」，用于偏好与去重。
 
@@ -185,21 +205,43 @@ def plan(profile: dict, ledger: dict, menu: list[dict], target: date) -> dict:
     recent = eaten_recently(ledger, target)
 
     cands = []
+    off_meal = profile.get("off_meal_keywords", [])
     for it in menu:
         name = it["name"]
+        # 禁用词必须穿透到套餐组成。
+        # 实测教训：用户说「明早不要冰咖啡」，规则命中「冰」，但候选是
+        # 「大脆鸡扒麦满分组合」——名字里没有「冰」，真正含冰的是它拆出来的
+        # 「鲜萃冰咖」。只匹配餐品名会让忌口规则在最常见的套餐上系统性失效，
+        # 而且失效得很安静：选出来的东西看起来完全合规。
+        surface = it.get("surface") or haystack(it)
         # 1) 忌口 / 过敏（硬否决）
-        bad = [k for k in profile.get("allergens", []) + profile.get("exclude_keywords", []) if k and k in name]
+        bad = [k for k in profile.get("allergens", []) + profile.get("exclude_keywords", [])
+               if k and k in surface]
         if bad:
+            continue
+        # 1b) 餐段语义兜底：query-meals 在早餐时点也会带上全天供应的甜品，
+        #     菜单本身没有餐段字段，只能靠品类词把它挡在早餐之外。
+        off = [k for k in off_meal if k and k in surface]
+        if off:
+            trace.append(f"排除 {name}：非早餐品类「{off[0]}」")
             continue
         # 2) 情境硬规则
         blocked = None
         for c in contexts:
             for kw in c.get("exclude_keywords", []):
-                if kw and kw in name:
+                if kw and kw in surface:
                     blocked = (c["tag"], kw)
         if blocked:
             trace.append(f"排除 {name}：情境 {blocked[0]} 命中禁词「{blocked[1]}」")
             continue
+        # 2b) 组合成分未知时不能假装安全。
+        #     营养库缺少某个单品 → parts 拼不全 → 无从判断是否含禁用成分。
+        #     这里不直接排除（否则早餐会大面积无候选），但降权并在卡片上说明。
+        is_cb = it.get("is_combo")
+        if is_cb is None:
+            is_cb = looks_combo(it.get("name") or "")
+        if is_cb and not it.get("parts_complete", True):
+            it["_unverified"] = True
         cands.append(it)
 
     # 3) 当日明确要求：满足则收窄，无法满足则降级到同主料
@@ -282,10 +324,11 @@ def render_card(res: dict, store_name: str = "") -> str:
     p = res["pick"]
     kcal = f"{p['kcal']:.0f} kcal" if p.get("kcal") is not None else "热量未知（无官方数据）"
     parts = " + ".join(x["name"] for x in p.get("parts", [])) if p.get("parts") else p["name"]
+    price = res["menu_price_cny"]
     lines = [
         f"明早 {res['meal_time']} · {store_name or '常去门店'} · 到店取餐柜",
         "",
-        f"【{p['name']}】 约 ¥{res['menu_price_cny']:.1f} · {kcal}",
+        f"【{p['name']}】 ¥{price:.2f} · {kcal}",
     ]
     if parts and parts != p["name"]:
         lines.append(f"  组成：{parts}")
@@ -296,6 +339,9 @@ def render_card(res: dict, store_name: str = "") -> str:
     if res["alternatives"]:
         alts = "、".join(a["name"] for a in res["alternatives"])
         lines += ["", f"想换的话：{alts}"]
+    # 这里显示的是菜单价。菜单价是「早餐卡专享价」，组合类可能比实际应付低 67%。
+    # 下单前必须用 calculate-price 覆盖（见 scripts/live_test.py），不能直接报价。
+    lines += ["", "（价格为菜单价，实际应付以下单前 calculate-price 结果为准）"]
     return "\n".join(lines)
 
 

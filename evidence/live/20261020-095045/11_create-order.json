@@ -1,0 +1,76 @@
+{
+  "seq": 11,
+  "label": "创建订单(预约)",
+  "tool": "create-order",
+  "args": {
+    "storeCode": "1450034",
+    "orderType": 1,
+    "beType": 1,
+    "takeWayCode": "locker-in",
+    "reservationDate": "2026-10-21 07:00",
+    "items": [
+      {
+        "productCode": "9900003431",
+        "quantity": 1
+      }
+    ]
+  },
+  "started_at": "2026-10-20T09:50:49",
+  "elapsed_ms": 417,
+  "ok": true,
+  "error": null,
+  "traceId": "e27d76153f3ad769a0f9130a80ffbf11",
+  "code": 200,
+  "success": true,
+  "response": {
+    "success": true,
+    "code": 200,
+    "message": "请求成功",
+    "datetime": "2026-10-20 09:50:50",
+    "traceId": "e27d76153f3ad769a0f9130a80ffbf11",
+    "data": {
+      "orderId": "1030268980000808540604890948",
+      "payId": "111032591718112788480",
+      "payH5Url": "https://m.mcd.cn/mcp/scanToPay?orderId=1030268980000808540604890948",
+      "orderDetail": {
+        "orderId": "1030268980000808540604890948",
+        "orderStatus": "待支付",
+        "status": "10",
+        "storeName": "麦当劳上海徐家汇餐厅",
+        "storeAddress": "天钥桥路1号（徐家汇1#店）",
+        "orderProductList": [
+          {
+            "productName": "大脆鸡扒麦满分组合",
+            "productImage": "https://menu-img.mcd.cn/pcm/prod/menu/20260422/product/MS_9900003431_320.png",
+            "quantity": 1,
+            "price": "13.5",
+            "comboItemList": [
+              {
+                "itemName": "大脆鸡扒麦满分",
+                "itemQuantity": 1
+              },
+              {
+                "itemName": "鲜萃冰咖",
+                "itemQuantity": 1
+              }
+            ]
+          }
+        ],
+        "totalAmount": "13.5",
+        "realTotalAmount": "13.5",
+        "totalDiscountAmount": "0",
+        "couponList": [],
+        "createTime": "2026-10-20 09:50:50",
+        "deliveryPrice": "0",
+        "realDeliveryPrice": "0",
+        "needTableware": false,
+        "productPrice": "13.5",
+        "takeWay": "外带",
+        "pickupCode": "",
+        "expirePayTime": "2026-10-20 10:05:50",
+        "payId": "111032591718112788480",
+        "remark": ""
+      }
+    }
+  }
+}

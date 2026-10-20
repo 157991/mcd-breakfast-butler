@@ -1,0 +1,59 @@
+{
+  "seq": 8,
+  "label": "核价 猪柳蛋麦满分组合",
+  "tool": "calculate-price",
+  "args": {
+    "storeCode": "1450034",
+    "orderType": 1,
+    "beType": 1,
+    "reservationDate": "2026-10-21 07:00",
+    "items": [
+      {
+        "productCode": "9900003491",
+        "quantity": 1
+      }
+    ]
+  },
+  "started_at": "2026-10-20T09:50:47",
+  "elapsed_ms": 1209,
+  "ok": true,
+  "error": null,
+  "traceId": "55e0c591adfb343967b818692d79beeb",
+  "code": 200,
+  "success": true,
+  "response": {
+    "success": true,
+    "code": 200,
+    "message": "请求成功",
+    "datetime": "2026-10-20 09:50:49",
+    "traceId": "55e0c591adfb343967b818692d79beeb",
+    "data": {
+      "productOriginalPrice": 2100,
+      "productPrice": 2100,
+      "originalPrice": 2100,
+      "discount": 0,
+      "price": 2100,
+      "productList": [
+        {
+          "productCode": "9900003491",
+          "productName": "猪柳蛋麦满分组合",
+          "quantity": 1,
+          "originalSubtotal": 2100,
+          "subtotal": 2100
+        }
+      ],
+      "takeWayList": [
+        {
+          "code": "eat-in",
+          "title": "堂食",
+          "subtitle": "店内用餐"
+        },
+        {
+          "code": "locker-in",
+          "title": "外带",
+          "subtitle": "店内取餐柜"
+        }
+      ]
+    }
+  }
+}

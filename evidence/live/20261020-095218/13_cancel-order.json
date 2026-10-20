@@ -1,0 +1,27 @@
+{
+  "seq": 13,
+  "label": "取消订单",
+  "tool": "cancel-order",
+  "args": {
+    "orderId": "1030525170000795821281521101",
+    "cancelReasonCode": "1"
+  },
+  "started_at": "2026-10-20T09:52:22",
+  "elapsed_ms": 186,
+  "ok": true,
+  "error": null,
+  "traceId": "c54c2b02cf31467aad2455d40f3c7c46",
+  "code": 200,
+  "success": true,
+  "response": {
+    "success": true,
+    "code": 200,
+    "message": "请求成功",
+    "datetime": "2026-10-20 09:52:23",
+    "traceId": "c54c2b02cf31467aad2455d40f3c7c46",
+    "data": {
+      "cancelResult": true,
+      "orderId": "1030525170000795821281521101"
+    }
+  }
+}

@@ -5,8 +5,9 @@
 
 <p align="center">
   <img alt="MCP" src="https://img.shields.io/badge/MCP-mcd.cn-FFC72C?style=flat-square">
-  <img alt="Tools verified" src="https://img.shields.io/badge/MCP%20tools%20verified-35%2F35-DA291C?style=flat-square">
-  <img alt="Nutrition coverage" src="https://img.shields.io/badge/official%20kcal%20coverage-46%25-1D9E75?style=flat-square">
+  <img alt="Tools" src="https://img.shields.io/badge/MCP%20tools%20enumerated-35-DA291C?style=flat-square">
+  <img alt="Coverage" src="https://img.shields.io/badge/official%20kcal%20coverage-30%25-1D9E75?style=flat-square">
+  <img alt="Live order" src="https://img.shields.io/badge/live%20order-created%20%26%20cancelled-2ea44f?style=flat-square">
   <img alt="License" src="https://img.shields.io/badge/use-personal%20%26%20non--commercial-555?style=flat-square">
 </p>
 
@@ -25,7 +26,7 @@
 | 随手把三餐照片丢过来 | 识别、记进账本，不要求填表、不追问 |
 | 一天什么都没发 | 按长期偏好照常安排，不催、不当作你没吃饭 |
 | 偶尔说「明天想吃营养卷」 | 优先满足这次要求，同时检查预算与在售 |
-| 什么都不做 | 明早 07:30，早餐已经在门店等你 |
+| 前一晚说「喝酒了，明早别给冰的」 | 把含冰饮的套餐全部挡掉，而不是换个名字继续推 |
 
 ---
 
@@ -34,67 +35,115 @@
 用户每天早上只会看到一张卡片，不是一份菜单：
 
 ```
-明早 07:30 · 麦当劳上海徐家汇餐厅 · 到店取餐柜
+明早 07:00 · 麦当劳上海徐家汇餐厅 · 外带取餐柜
 
-【大脆鸡扒麦满分组合】 约 ¥8.1 · 376 kcal
-  组成：大脆鸡扒麦满分 + 小杯鲜萃咖啡
+【大脆鸡扒麦满分】 ¥11.50 · 361 kcal
 
 为什么是它：
+  · 前一晚饮酒，含冰饮的套餐已全部排除（52 个候选被挡）
   · 这个主料距上次吃 3 天
   · 在你的常点清单里
-  · 前一晚饮酒，早上不安排冰饮
-  · 376 kcal，在目标区间内
-
-想换的话：大脆鸡扒麦满分、猪柳蛋麦满分组合
+  · 361 kcal，在目标区间内
 ```
 
 > 上面这段是**真实运行输出**，不是设计稿。复现方式见下方「自己跑一遍」。
 
 ---
 
-## 三个把设计打回重做的实测结果
+## 四个把设计打回重做的实测结果
 
-我们没有先写功能再找场景，而是先把麦当劳 MCP 的 35 个工具全部打通实测，结果推翻了三个想当然的设计。
+我们没有先写功能再找场景，而是把麦当劳 MCP 的 35 个工具全部枚举、核心链路真机跑通，结果推翻了四个想当然的设计。**下面每个数字都能在 `evidence/` 里逐条复核。**
 
-### ① 官方热量只覆盖 46% 的早餐餐品 —— 但套餐拆解能救回三倍
+### ① 官方热量只覆盖 30%——而且最初的"46%"是算错的
 
-`query-meals` 返回的菜单**没有任何营养字段**，`list-nutrition-foods` 返回的是**以中文名为键的文本表、没有商品编码**。两边键不相交，只能靠名称对齐：
+`query-meals` 的菜单**没有任何营养字段**；`list-nutrition-foods` 是**以中文名为键的文本表、160 条、全是单品、没有商品编码**。两边键不相交，只能按名称对齐。
+
+第一版按 `isDefault` 拆套餐，得到 46%。跑通真实下单后才发现这是假数字：
+
+```
+套餐「大脆鸡扒麦满分组合」的饮品组：
+    小杯鲜萃咖啡   isDefault=1   quantity=0   ← 我按这个取
+    鲜萃冰咖       isDefault=0   quantity=1   ← 订单实际给的是这个
+```
+
+订单 `1030268980…090948` 的 `comboItemList` 明确写着 **鲜萃冰咖**。
+
+**`create-order` 认的是 `quantity>0`，不是 `isDefault=1`。** 按 `isDefault` 取，等于把冰饮当热咖啡：热量算错，而且「不要冰」这类忌口词会直接漏检——**这是一种"安静的错"，比报错危险得多。**
+
+改成 `quantity>0` 之后的真实覆盖：
 
 | 解析方式 | 可算热量的餐品 |
 |---|---|
-| 只有单品直配 | 11 / 70 = **16%** |
-| 加上套餐拆解 | 32 / 70 = **46%** |
+| 只有单品直配 | 23 / 100 = **23%** |
+| 加上套餐拆解 | 30 / 100 = **30%** |
 
-关键在于：菜单里大量是「套餐/组合」，它们的热量不等于任何单个营养表条目。但 `query-meal-detail` 会返回 `rounds[].choices[]` 并标注 `isDefault`，**照默认组合拆成单品再逐个匹配加总，可算比例翻了近三倍**。
+掉下来的部分不是退步，是去掉了虚高：营养库缺的正好是**冰饮系**（鲜萃冰咖、冰美式、冰奶铁、怡泉+C、美汁源），而饮品是套餐的必选项。
 
-实测样例（猪柳蛋麦满分套餐，546 kcal）：
+### ② 菜单价不是价格，按它排序会直接排反
+
+`query-meals` 的 `currentPrice` 是「早餐卡专享价」。同一时刻用 `calculate-price` 复核：
+
+| 餐品 | 菜单价 | 实际应付 | 偏差 |
+|---|---|---|---|
+| 大脆鸡扒麦满分**组合** | ¥8.1 | **¥13.50** | +67% |
+| 猪柳蛋麦满分**组合** | ¥12.6 | **¥21.00** | +67% |
+| 大脆鸡扒麦满分**单品** | ¥11.5 | ¥11.50 | +0% |
+
+**组合一律 +67%，单品 0%。** 于是排序直接翻转：按菜单价，组合 ¥8.1 比单品 ¥11.5 便宜；按真实价，组合 ¥13.50 比单品 ¥11.50 贵。任何用菜单价做预算判断的逻辑，都会稳定地把用户推向更贵的东西。
+
+所以引擎是**两段式**：菜单价只做粗筛，定案前对 top-N 逐条 `calculate-price`，用真实金额重排。
+
+### ③ 预约不等于"延后付款"——支付只有 15 分钟
+
+真实订单的时间戳：
 
 ```
-猪柳蛋麦满分(387) + 脆薯饼 + 大杯鲜萃咖啡 = 546 kcal   ✅
+createTime    2026-10-20 09:52:22
+expirePayTime 2026-10-20 10:07:22     ← 15 分钟
+reservationDate  2026-10-21 07:00     ← 取餐在明早
 ```
 
-而如果偷懒把「套餐」当单品匹配，会得到 387 kcal —— 系统会以为你今天还剩很多额度。
+`reservationDate` 锁的只是**取餐时间**，不是付款时间。下单那一刻就开始 15 分钟倒计时，超时订单作废。
 
-### ② 钱和热量是反向的，合成一个预算必然算错
+**"前一晚 22:00 自动下单、明早直接去吃"在接口层面不成立。** 可行形态只有两个：早上起床前 15 分钟内下单，或者停在下单前一步等用户点。这个 Skill 选后者，并把倒计时如实显示在卡片上。
 
-同一款主食在菜单上的三个规格：
+### ④ 一句「不要冰咖啡」，必须在套餐组成上生效
 
-| 规格 | 价格 | 热量 |
-|---|---|---|
-| 猪柳蛋麦满分（单点） | ¥18.0 | 387 kcal |
-| 猪柳蛋麦满分组合 | ¥12.6 | 402 kcal |
-| 猪柳蛋麦满分套餐 | ¥15.3 | 546 kcal |
+这是真机下单才暴露的：用户说「今晚喝酒了，明早不要冰咖啡」，引擎却推出了「大脆鸡扒麦满分组合」。因为禁用词只匹配**商品名**，而这七个字里没有「冰」——真正含冰的是它拆出来的「鲜萃冰咖」。
 
-**单点最贵、热量最低。** 只要把"省钱"和"控热量"揉成一个分数，系统就会稳定地推荐更便宜的套餐，热量一路涨。
-所以这个 Skill 的引擎里，热量区间和金额预算是**两个前后相继的硬筛**，永远不合并。
+**忌口与情境规则在最常见的商品形态（套餐）上系统性失效，而且失效得很安静：选出来的东西看起来完全合规。**
 
-### ③ 热量不可能"配平"，只能"设区间"
+修法是让禁用词穿透到组成面。修好后再跑同一份账本，排除轨迹是这样的：
 
-- 单张饭菜照片的份量误差：约 **±40%**
-- TDEE 估算误差：约 **±10%**（对 2000 kcal 的人是 ±200 kcal）
-- 缓慢减重需要的日赤字：约 **275 kcal**
+```
+排除 大脆鸡扒麦满分组合：情境 alcohol 命中禁词「冰」
+排除 猪柳蛋麦满分套餐：情境 alcohol 命中禁词「冰」
+排除 火腿扒早安营养卷组合：情境 alcohol 命中禁词「冰」
+…共 52 个候选被挡在门外
+```
 
-**误差和被控对象同量级。** 所以"昨晚吃多了、今早少吃点"这种算法在数学上就是假的。这个 Skill 因此从不做跨餐加减，早餐只受一个绝对区间约束（默认 350–500 kcal），三餐账本只用来判断口味与趋势。
+**52 个。** 一句"不要冰的"，在真实菜单上几乎砍掉一半早餐——因为绝大多数套餐默认配的都是冰咖。这既说明规则必须穿透，也说明"直接排除"过于粗暴：`query-meal-detail` 里其实提供 `modification`，可以把饮品换成热的。**升级方向是"改配"而不是"排除"**，首版先用保守策略，并在卡片上说明。
+
+---
+
+## 真机跑通：下单 → 查状态 → 取消 → 复查
+
+两个订单，都在下单后立即取消，**零扣款**（`create-order` 只生成待支付订单，不扫码不会扣钱）：
+
+| 项目 | 结果 |
+|---|---|
+| 订单号 | `1030525170000795821281521101` |
+| 金额 | ¥11.50（`calculate-price` 报价与订单 `totalAmount` 一致） |
+| 取餐方式 | `locker-in` 外带取餐柜 |
+| 状态流转 | `待支付 / 10` → `订单已取消 / 60` |
+| 15 步 traceId | 全部留存于 `evidence/live/` |
+
+重跑一条命令即可复现（`--execute-order` 才动真订单）：
+
+```bash
+python scripts/live_test.py --store 1450034 --date 2026-10-21 --time 07:00
+python scripts/live_test.py --store 1450034 --date 2026-10-21 --time 07:00 --execute-order
+```
 
 ---
 
@@ -106,32 +155,27 @@
 # 1) 放 Token（只写本地，不进仓库）
 echo "YOUR_MCP_TOKEN" > scripts/.token
 
-# 2) 看工具清单
+# 2) 看工具清单（35 个）
 python scripts/mcp_call.py list
 
-# 3) 抓当天的早餐菜单并解析热量（约 70 个餐品，含套餐拆解）
+# 3) 真实链路测试：时间→账户→门店→菜单→热量→决策→核价→券
+python scripts/live_test.py --store 1450034 --date 2026-10-21 --time 07:00
+
+# 4) 抓菜单并解析热量（含套餐拆解）
 python scripts/resolver.py <storeCode> "2026-10-21 07:00"
 
-# 4) 跑决策引擎（三个场景的账本都在 data/ 里）
+# 5) 跑决策引擎（三个场景的账本都在 data/ 里）
 python scripts/planner.py --ledger data/ledger.normal.json   --date 2026-10-21  # 正常拍了三餐 + 昨晚喝酒
 python scripts/planner.py --ledger data/ledger.sparse.json   --date 2026-10-21  # 一天没拍照片
 python scripts/planner.py --ledger data/ledger.request.json  --date 2026-10-21  # 临时说想吃营养卷
 ```
-
-三个场景的真实输出：
-
-| 场景 | 引擎的选择 | 命中规则 |
-|---|---|---|
-| 正常拍了三餐 + 昨晚喝酒 | 大脆鸡扒麦满分组合 · ¥8.1 · 376 kcal | 酒精情境排除冰饮 → 命中热量区间 → 组合比单品便宜 |
-| 一天没拍照片 | 猪柳蛋麦满分组合 · ¥12.6 · 402 kcal | 不追问、不视为零摄入，只降低近期权重 |
-| 临时说想吃营养卷 | 火腿扒早安营养卷组合 · ¥11.7 · 459 kcal | 明确要求优先于常规推荐，仍受预算与热量约束 |
 
 ---
 
 ## 安装成 Skill
 
 ```bash
-git clone https://github.com/<your-name>/mcd-breakfast-butler.git \
+git clone https://github.com/157991/mcd-breakfast-butler.git \
   ~/.workbuddy/skills/mcd-breakfast-butler
 ```
 
@@ -167,8 +211,8 @@ git clone https://github.com/<your-name>/mcd-breakfast-butler.git \
                           ┌───────────────────┴──────────────┐
                           ▼                                  ▼
                   query-meals 在售                   list-nutrition-foods
-                  query-meal-detail 拆解              （套餐拆成单品后加总）
-                  calculate-price 权威报价
+                  query-meal-detail 拆解              （按 quantity>0 拆解加总）
+                  calculate-price 权威报价（分）
                           │
                           ▼
                     一张卡片 → 支付前一步交给用户
@@ -180,8 +224,13 @@ git clone https://github.com/<your-name>/mcd-breakfast-butler.git \
 忌口/过敏 > 当日明确要求 > 情境规则 > 热量区间 > 金额预算 > 好吃 > 不重复
 ```
 
-「好吃」不是形容词，它被折算成可计算的行为代理：历史出现频次 × 正向反馈 × 偏好关键词。
-比较一律在**主体名**层面进行 —— 把「猪柳蛋麦满分」「…组合」「…套餐」视为同一个东西，否则系统会以为"单品没吃过"而反复推单品。
+其中三条是硬约束，写在代码里而不是文档里：
+
+- **禁用词在「商品名 + 实际组成」上匹配**，不只在商品名上匹配。
+- **热量区间与金额预算前后相继、永不合并成单一分数**——否则会稳定偏向高热量。
+- **组合成分未知（营养库缺件）时不假装安全**，标记"成分未验证"并降权。
+
+「好吃」不是形容词，它被折算成可计算的行为代理：历史出现频次 × 正向反馈 × 偏好关键词。比较一律在**主体名**层面进行 —— 把「猪柳蛋麦满分」「…组合」「…套餐」视为同一个东西，否则系统会以为"单品没吃过"而反复推单品。
 
 ---
 
@@ -190,13 +239,14 @@ git clone https://github.com/<your-name>/mcd-breakfast-butler.git \
 ```
 ├── SKILL.md                    Skill 入口：规则、流程、MCP 陷阱清单
 ├── README.md
-├── MCP_INTEGRATION.md          用了哪些 Tool、怎么调、业务价值
+├── MCP_INTEGRATION.md          用了哪些 Tool、怎么调、踩了什么坑
 ├── CONTEST_DECLARATION.md      参赛声明（官方原文，未改动）
 ├── workbuddy.md                开发过程对话上下文
 ├── scripts/
 │   ├── mcp_call.py             MCP 直连客户端（含混合格式解析）
 │   ├── resolver.py             餐品→热量：单品直配 / 套餐拆解 / 无数据三态
 │   ├── planner.py              决策引擎（优先级仲裁在代码里）
+│   ├── live_test.py            真实链路测试（读写分离，每步留 traceId）
 │   └── ledger.py               饮食账本（默认 ~/.mcd-breakfast/）
 ├── data/
 │   ├── nutrition.json          160 条官方营养数据（实测抓取）
@@ -205,7 +255,7 @@ git clone https://github.com/<your-name>/mcd-breakfast-butler.git \
 │   └── ledger.*.json           三个演示场景的账本
 ├── references/                 决策规则、照片摄入估算规范、档案结构
 ├── docs/                       产品定义、验证报告、演示脚本
-└── evidence/                   全部实测原始响应（可复核）
+└── evidence/                   全部实测原始响应（含真机订单时间线）
 ```
 
 ---
@@ -215,10 +265,11 @@ git clone https://github.com/<your-name>/mcd-breakfast-butler.git \
 一个诚实的产品要写清边界，否则就会变成过度承诺：
 
 - **不承诺减重结果。** 早餐只影响一天约 20–25% 的热量，一次夜间饮酒就能抹平一周早餐的赤字（1400 vs 1500–2000 kcal）。这里只承诺"早餐在预算内、且你愿意吃"。
+- **不承诺热量精确。** 官方数据只覆盖 30% 的早餐商品，剩下 70% 显示"未知"，不拿同类均值冒充。这是数据的边界，不是算法的边界。
 - **不做医学判断。** 「喝酒后不要冰咖啡」是个人偏好规则，不推广成适用于所有人的健康结论。
 - **不把照片当摄入记录。** 拍到了不等于全吃完，没拍到不等于没吃。
-- **不代扣款。** 订单填到支付前一步，付款必须由用户自己点。
-- **不猜数字。** 46% 之外的餐品，热量就显示"未知"，不拿同类均值冒充官方数据。
+- **不代扣款。** 订单填到支付前一步，付款必须由用户自己点。任何"帮你付了"的承诺都超出接口能力。
+- **不承诺外送到家。** 当前账号无配送地址，实测链路走的是到店外带取餐柜（`locker-in`）。麦乐送（`orderType=2`）需要 `addressId`，未验证前不写入承诺。
 
 ---
 
@@ -226,15 +277,20 @@ git clone https://github.com/<your-name>/mcd-breakfast-butler.git \
 
 | 验证项 | 结果 |
 |---|---|
-| MCP 工具 | 35 个全部枚举，核心 8 个完成实际调用 |
-| 营养库 | 160 条，字段 `energyKcal / protein / fat / carbohydrate / sodium / calcium` |
-| 早餐菜单 | 70 个餐品，官方热量覆盖 32 个（46%），套餐拆解贡献 21 个 |
+| MCP 工具 | 35 个全部枚举 |
+| 真机调用 | 12 个工具完成真实调用，含 `create-order` / `cancel-order` |
+| 营养库 | 160 条，全为单品，字段 `energyKcal / protein / fat / carbohydrate / sodium / calcium` |
+| 早餐菜单 | 100 个餐品，官方热量覆盖 30 个（30%），套餐拆解贡献 7 个 |
 | 预约能力 | `query-meals` / `calculate-price` / `create-order` 均支持 `reservationDate` |
 | 预约窗口 | 门店仅返回今明两天的可预约时段 |
-| 早餐时段 | 实测门店为 06:44–10:15（各店不同，需从门店数据读取） |
-| 支付 | `create-order` 返回订单详情与**支付链接**，无代扣能力 |
+| 早餐时段 | 实测门店 1450034 为 05:14–10:15（各店不同，需从门店数据读取） |
+| **支付窗口** | **下单后 15 分钟，超时作废** |
+| 计价单位 | `data.price`，单位是**分**（1350 = ¥13.50） |
+| 取餐方式 | `takeWayList[]`，`code` = `eat-in` / `locker-in` |
+| 券 | 绑定指定 `productCode`，非通用折扣；`query-my-coupons` 只返回 Markdown，拿不到 `couponId` |
+| 外送 | 账号无地址（`addresses: []`），未验证 |
 
-完整原始响应见 [`evidence/`](evidence/)，验证过程见 [`docs/VERIFICATION.md`](docs/VERIFICATION.md)。
+完整原始响应见 [`evidence/`](evidence/)，验证过程与踩坑记录见 [`docs/VERIFICATION.md`](docs/VERIFICATION.md)。
 
 ---
 

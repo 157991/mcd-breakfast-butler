@@ -17,5 +17,6 @@
   },
   "allergens": [],
   "exclude_keywords": [],
+  "off_meal_keywords": ["麦旋风", "圆筒", "新地", "派"],
   "prefer_keywords": ["麦满分", "粥"]
 }

@@ -107,7 +107,10 @@ def lookup(idx: dict, name: str) -> tuple[dict | None, str]:
 def get_detail(store: str, order_type: int, be_type: int, code: str,
                reservation: str | None) -> dict | None:
     os.makedirs(DETAILS, exist_ok=True)
-    cache = os.path.join(DETAILS, f"{code}.json")
+    # 缓存键必须带上门店与订单类型：同一个 code（尤其套餐）在不同门店、不同
+    # orderType 下的可选组与默认项并不保证一致，只用 code 做键会把 A 店的
+    # 组合结构套到 B 店，热量的来源就错了。
+    cache = os.path.join(DETAILS, f"{store}_{order_type}_{code}.json")
     if os.path.exists(cache):
         return json.load(open(cache, encoding="utf-8"))
     args = {"storeCode": store, "orderType": order_type, "beType": be_type, "code": code}
@@ -136,10 +139,23 @@ def resolve_meal(idx: dict, store: str, order_type: int, be_type: int,
     if detail and detail.get("success") and detail.get("data", {}).get("rounds"):
         parts, total, missing = [], 0.0, []
         for rd in detail["data"]["rounds"]:
-            default = [c for c in rd.get("choices", []) if c.get("isDefault") == 1] or \
-                      rd.get("choices", [])[:1]
-            for ch in default:
-                qty = ch.get("quantity", 1) or 1
+            # 默认组成必须按 quantity>0 取，不能按 isDefault 取。
+            # 实测反例（订单 1030268980000808540604890948）：
+            #   round「选择早餐组合饮料」里
+            #     小杯鲜萃咖啡  isDefault=1  quantity=0
+            #     鲜萃冰咖      isDefault=0  quantity=1
+            #   真实下单给出的 comboItemList 是「鲜萃冰咖」——即 quantity>0 的那个。
+            #   若按 isDefault 取，会把冰饮当成热咖啡：热量算错，且「不要冰」这类
+            #   忌口/情境词会直接漏检。这是"安静的错"，比报错危险得多。
+            picked = [c for c in rd.get("choices", []) if (c.get("quantity") or 0) > 0]
+            if not picked:
+                picked = [c for c in rd.get("choices", []) if c.get("isDefault") == 1]
+            if not picked:
+                picked = rd.get("choices", [])[:1]
+            for ch in picked:
+                # choice.quantity 可能缺省，用组上的 quantity 兜底；不能当 0，
+                # 也不能无脑当 1（数量为 2 的组会少算一半）。
+                qty = ch.get("quantity") or rd.get("quantity") or 1
                 sub, subhow = lookup(idx, ch["name"])
                 if sub:
                     parts.append({"name": sub["productName"], "qty": qty,
@@ -175,23 +191,24 @@ def main() -> None:
         args["reservationDate"] = reservation
     menu = mcp_call.call_tool("query-meals", args)["data"]
 
-    bk_codes = []
-    for c in menu["categories"]:
-        if any(k in c["name"] for k in BREAKFAST_KEYS):
-            for it in c.get("meals", []):
-                bk_codes.append(it["code"])
-    bk_codes = list(dict.fromkeys(bk_codes))
+    # 用菜单全量，不按分类名预筛。
+    # 理由：query-meals 在早餐时点返回的是"当前可点单集合"，本身不区分餐段，
+    # 里面既有早餐也有全天供应的甜品（麦旋风、圆筒、新地）。哪些能用是**决策层**
+    # 的规则问题；解析层如果提前裁剪，算出来的就是"我自己挑过的子集覆盖率"，
+    # 既不可比也会让两处脚本口径打架。
+    codes = list((menu.get("meals") or {}).keys())
 
-    out, stat = [], {"official_single": 0, "official_combo": 0,
-                     "official_partial": 0, "inferred_by_name": 0, "missing": 0}
-    for code in bk_codes:
+    out, stat = [], {}
+    for code in codes:
         m = menu["meals"].get(code)
         if not m:
             continue
         r = resolve_meal(idx, store, 1, 1, code, m["name"], reservation)
         stat[r["source"]] = stat.get(r["source"], 0) + 1
-        out.append({"code": code, "name": m["name"], "price": float(m["currentPrice"]),
-                    "originalPrice": float(m.get("originalPrice") or 0),
+        out.append({"code": code, "name": m["name"], "price": m["currentPrice"],
+                    "originalPrice": m.get("originalPrice") or 0,
+                    "is_combo": is_combo(m["name"]),
+                    "parts_complete": r["source"] == "official_combo",
                     **r})
         print(f"{r['source']:<18} {r['kcal'] if r['kcal'] is not None else '-':>7} "
               f"{m['name']}")
@@ -201,21 +218,23 @@ def main() -> None:
               ensure_ascii=False, indent=2)
 
     total = len(out)
-    covered = total - stat["missing"]
+    n_single = stat.get("official_single", 0)
+    n_combo = stat.get("official_combo", 0)
+    n_incomplete = stat.get("incomplete_combo", 0)
+    n_missing = stat.get("missing", 0)
+    n_known = n_single + n_combo
     lines = [
         "# 早餐餐品 → 热量 解析覆盖率",
         "",
         f"- 门店：`{store}`　预约时点：`{reservation or '即时'}`",
-        f"- 早餐相关餐品：**{total}**",
-        f"- 可用官方数据（单品直配）：**{stat['official_single']}**",
-        f"- 可用官方数据（套餐拆解）：**{stat['official_combo']}**",
-        f"- 官方数据不完整（组合含缺失单品）：**{stat.get('official_partial', 0)}**",
-        f"- 仅按名称推定（低置信）：**{stat['inferred_by_name']}**",
-        f"- 完全无数据：**{stat['missing']}**",
+        f"- 菜单全量餐品：**{total}**",
+        f"- 可用官方数据（单品直配）：**{n_single}**",
+        f"- 可用官方数据（套餐拆解）：**{n_combo}**",
+        f"- 官方数据不完整（组合含缺失单品，不可用）：**{n_incomplete}**",
+        f"- 营养库无对应条目：**{n_missing}**",
         "",
-        f"**官方数据覆盖率（单品直配 + 套餐拆解）：{stat['official_single'] + stat['official_combo']}/{total}"
-        f" = {(stat['official_single'] + stat['official_combo']) / total:.0%}**",
-        f"**含低置信推定后的可展示覆盖：{covered}/{total} = {covered / total:.0%}**",
+        f"**官方数据覆盖率（单品直配 + 套餐拆解）：{n_known}/{total}"
+        f" = {n_known / total:.0%}**",
         "",
         "## 完整可计算清单（kcal 与套餐组成均已验证）",
         "",

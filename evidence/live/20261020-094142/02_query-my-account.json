@@ -1,0 +1,32 @@
+{
+  "seq": 2,
+  "label": "账户状态",
+  "tool": "query-my-account",
+  "args": {},
+  "started_at": "2026-10-20T09:41:42",
+  "elapsed_ms": 156,
+  "ok": true,
+  "error": null,
+  "traceId": "8436d7421cee5be246383042e7a9755a",
+  "code": 200,
+  "success": true,
+  "response": {
+    "success": true,
+    "code": 200,
+    "message": "请求成功",
+    "datetime": "2026-10-20 09:41:43",
+    "traceId": "8436d7421cee5be246383042e7a9755a",
+    "data": {
+      "availablePoint": "0",
+      "accountId": "02003406548923573244411801631",
+      "accumulativePoint": "0",
+      "currency": "麦享会积分",
+      "currentMouthExpirePoint": "0",
+      "expiredPoint": "0",
+      "frozenPoint": "0",
+      "lastMouthExpirePoint": "0",
+      "nextMouthExpirePoint": "0",
+      "usedPoint": "0"
+    }
+  }
+}

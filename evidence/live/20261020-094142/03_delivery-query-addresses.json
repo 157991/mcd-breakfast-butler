@@ -1,0 +1,23 @@
+{
+  "seq": 3,
+  "label": "外送地址",
+  "tool": "delivery-query-addresses",
+  "args": {},
+  "started_at": "2026-10-20T09:41:42",
+  "elapsed_ms": 128,
+  "ok": true,
+  "error": null,
+  "traceId": "ac7e1c9f5961dddb37390d2095488e49",
+  "code": 200,
+  "success": true,
+  "response": {
+    "success": true,
+    "code": 200,
+    "message": "请求成功",
+    "datetime": "2026-10-20 09:41:43",
+    "traceId": "ac7e1c9f5961dddb37390d2095488e49",
+    "data": {
+      "addresses": []
+    }
+  }
+}

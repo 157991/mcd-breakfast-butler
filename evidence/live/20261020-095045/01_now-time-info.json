@@ -1,0 +1,33 @@
+{
+  "seq": 1,
+  "label": "服务端时间基准",
+  "tool": "now-time-info",
+  "args": {},
+  "started_at": "2026-10-20T09:50:45",
+  "elapsed_ms": 196,
+  "ok": true,
+  "error": null,
+  "traceId": "28c1ee29cd722d423771299c5f3e19e3",
+  "code": 200,
+  "success": true,
+  "response": {
+    "success": true,
+    "code": 200,
+    "message": "请求成功",
+    "datetime": "2026-10-20 09:50:46",
+    "traceId": "28c1ee29cd722d423771299c5f3e19e3",
+    "data": {
+      "timestamp": 1792461046855,
+      "datetime": "2026-10-20T09:50:46.855",
+      "formatted": "2026-10-20 09:50:46",
+      "date": "2026-10-20",
+      "year": 2026,
+      "month": 10,
+      "day": 20,
+      "dayOfWeek": "TUESDAY",
+      "timezone": "GMT+08:00",
+      "offset": "+08:00",
+      "utc": "2026-10-20T01:50:46.855Z"
+    }
+  }
+}
