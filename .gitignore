@@ -28,3 +28,6 @@ Thumbs.db
 
 # 本地工作区数据（会话记忆等，不属于作品内容）
 .workbuddy/
+
+# 运营方案（本地留存，不进公开仓库）
+docs/LAUNCH.md

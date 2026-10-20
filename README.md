@@ -3,6 +3,8 @@
 > **拍三餐，它记住，替你决定明早吃什么。**
 > 一个带饮食记忆的麦当劳早餐管家 Skill —— 你不用每天做选择，只在想改的时候说一句。
 
+<sub>这个项目正在参加麦当劳 MCP 开发者大赛，排名只按 GitHub Star 算。如果它对你有一点用，一颗 Star 就是唯一的投票方式。</sub>
+
 <p align="center">
   <img alt="MCP" src="https://img.shields.io/badge/MCP-mcd.cn-FFC72C?style=flat-square">
   <img alt="Tools" src="https://img.shields.io/badge/MCP%20tools%20enumerated-35-DA291C?style=flat-square">
